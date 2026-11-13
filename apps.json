@@ -1,0 +1,57 @@
+{
+  "_help": "The ONE list of Visagie apps. Read by the website home page and by every app's 'More Visa apps' screen (no app update needed). New app: add a block, keep live:false until it is public on Google Play, then set live:true. Apps only show live apps to the public; test builds show all. icon = path on this site (256x256 PNG in img/). order = lower comes first.",
+  "version": 1,
+  "developerPage": "https://play.google.com/store/apps/dev?id=5667284812696899656",
+  "apps": [
+    {
+      "id": "visagie.philip.visasched",
+      "name": "VisaSched",
+      "tagline": "Smart reminders – the one that keeps time",
+      "about": "Reminders that read themselves out loud and start the other Visa apps at the right moment.",
+      "points": ["Reminders that read themselves out loud", "Opens WhatsApp, the dialer or maps – filled in, ready to send", "Starts the other Visa apps at the right moment"],
+      "category": "Everyday",
+      "icon": "img/visasched.png",
+      "hub": true,
+      "live": false,
+      "privacy": true,
+      "isNew": true,
+      "order": 1
+    },
+    {
+      "id": "visagie.philip.visaplay",
+      "name": "VisaPlay",
+      "tagline": "Video & music player + internet radio",
+      "about": "Plays almost any video or music file – MKV, AVI, FLAC – plus radio from around the world.",
+      "points": ["Plays almost any format – MKV, AVI, FLAC…", "Internet radio from South Africa and the world", "Playlists, favourites, carry on where you stopped"],
+      "category": "Media",
+      "icon": "img/visaplay.png",
+      "live": false,
+      "privacy": true,
+      "order": 2
+    },
+    {
+      "id": "visagie.philip.visacook",
+      "name": "VisaCook",
+      "tagline": "Recipes & cocktails",
+      "about": "Food and cocktail recipes, a servings calculator and a grocery list with a budget.",
+      "points": ["Food and cocktail recipes, mocktails too", "Change the servings – everything recalculates", "Grocery list with a budget"],
+      "category": "Food & drink",
+      "icon": "img/visacook.png",
+      "live": false,
+      "privacy": true,
+      "order": 3
+    },
+    {
+      "id": "visagie.philip.visapdf",
+      "name": "VisaPdf",
+      "tagline": "Photo to PDF",
+      "about": "Turn photos and camera shots into one tidy PDF and send it to WhatsApp or email.",
+      "points": ["Photos or camera shots into one tidy PDF", "Crop, rotate and reorder pages", "Send to WhatsApp or email – several at once"],
+      "category": "Documents",
+      "icon": "img/visapdf.png",
+      "live": false,
+      "privacy": true,
+      "order": 4
+    }
+  ]
+}
