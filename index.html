@@ -1,8 +1,342 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visagie Apps</title>
-<style>body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#FFF7EA;color:#2B1A0C}
-main{max-width:640px;margin:0 auto;padding:48px 20px}h1{color:#075128;margin:0 0 8px}a{color:#A94E14}</style></head>
-<body><main><h1>Visagie Apps</h1><p>Simple, friendly Android apps made in South Africa by Philip Visagie.</p>
-<ul><li>VisaPdf – photos to PDF</li><li>VisaPlay – video &amp; music player</li><li>VisaCook – food &amp; cocktail recipes</li></ul>
-<p>Contact: <a href="mailto:philip.visadev@gmail.com">philip.visadev@gmail.com</a></p></main></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Visagie Family of Apps</title>
+<meta name="description" content="Four Android apps that work together: VisaSched smart reminders, VisaPlay video & music player, VisaPdf photo to PDF, VisaCook recipes & cocktails. Made in South Africa.">
+<meta property="og:title" content="The Visagie Family of Apps">
+<meta property="og:description" content="Four Android apps that work as one. VisaSched keeps time and calls the others in when you need them.">
+<meta property="og:image" content="https://philipvisadev.github.io/img/visasched.png">
+<link rel="icon" href="img/visasched.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#FFCE45;--gold-bright:#FFE28A;--gold-deep:#E59A12;--saffron:#E6A54A;--burnt:#C8641E;--deep-orange:#A94E14;
+  --emerald:#0E7A3C;--emerald-deep:#075128;--emerald-night:#04331A;
+  --cream:#FFF7EA;--sand:#F6E3C3;--ink:#2B1A0C;--ink-muted:#7A5A3C;--espresso:#24170C;--espresso-light:#34230F;
+  --head:"Fraunces",Georgia,serif;--body:"Nunito Sans",system-ui,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--deep-orange)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
+
+/* ---------- top bar ---------- */
+.top{position:absolute;inset:0 0 auto;z-index:5}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--cream);text-decoration:none;font-weight:800;letter-spacing:.02em}
+.brand .dots{display:grid;grid-template-columns:repeat(2,9px);gap:4px}
+.brand .dots i{width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.brand .dots i:nth-child(2){background:var(--saffron)}.brand .dots i:nth-child(3){background:var(--emerald)}.brand .dots i:nth-child(4){background:var(--gold-bright)}
+.top nav a{color:var(--sand);text-decoration:none;font-weight:700;margin-left:22px;font-size:15px}
+.top nav a:hover{color:var(--gold)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--espresso);color:var(--cream);padding:96px 0 72px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:900px;z-index:-1;
+  background:radial-gradient(closest-side at 50% 52%,rgba(230,165,74,.42),rgba(169,78,20,.18) 55%,transparent 75%)}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:120px;z-index:-1;
+  background:linear-gradient(transparent,rgba(4,51,26,.55))}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+.kicker{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.hero h1{font-size:clamp(38px,6.4vw,72px);font-weight:800;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--sand);max-width:34em;margin:18px 0 0}
+
+/* ---------- the family diagram ---------- */
+.family{position:relative;width:100%;max-width:600px;aspect-ratio:1;margin:0 auto}
+.family svg.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lines .track{fill:none;stroke:rgba(255,206,69,.22);stroke-width:.5}
+.lines .flow{fill:none;stroke:var(--gold);stroke-width:.55;stroke-linecap:round;stroke-dasharray:.2 2.2;opacity:.45;animation:flow 1.6s linear infinite;transition:opacity .4s,stroke-width .4s}
+.lines .flow.on{opacity:1;stroke-width:.9}
+@keyframes flow{to{stroke-dashoffset:-2.4}}
+.lines .spark{fill:var(--gold-bright);opacity:.5;transition:opacity .4s}
+.lines .spark.on{opacity:1}
+.lines .ring{fill:none;stroke:rgba(255,206,69,.12);stroke-width:.35;stroke-dasharray:1 1.6}
+
+.node{position:absolute;transform:translate(-50%,-50%);border:0;padding:0;background:none;cursor:pointer;color:var(--cream);font:inherit;text-align:center}
+.node img{width:100%;border-radius:23%;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .35s,box-shadow .35s}
+.node b{display:block;margin-top:8px;font-weight:800;font-size:clamp(12px,1.8vw,16px);letter-spacing:.02em}
+.node:hover img,.node.on img{transform:scale(1.06);box-shadow:0 0 0 3px var(--gold),0 0 36px rgba(255,206,69,.55),0 10px 30px rgba(0,0,0,.45)}
+.node:focus-visible{outline:3px solid var(--gold);outline-offset:6px;border-radius:20px}
+.sat{width:18%}
+.hub{width:25%;cursor:default}
+.hub .halo{position:relative;display:block}
+.hub .led{position:absolute;inset:-15%;width:130%;height:130%;pointer-events:none}
+.hub .led circle{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:0 9.2;animation:spin 14s linear infinite;transform-origin:50% 50%;filter:drop-shadow(0 0 2px var(--gold))}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hub b{margin-top:18%;font-size:clamp(14px,2.2vw,19px);color:var(--gold)}
+.hub small{display:block;color:var(--sand);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+.tag{position:absolute;transform:translate(-50%,-50%);background:rgba(36,23,12,.85);border:1px solid rgba(255,206,69,.35);color:var(--gold-bright);
+  font-weight:800;font-size:13px;padding:5px 11px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:background .4s,color .4s,border-color .4s}
+.tag.on{background:var(--gold);color:var(--espresso);border-color:var(--gold)}
+
+/* story card */
+.story{background:linear-gradient(160deg,var(--espresso-light),#2a1b0d);border:1px solid rgba(255,206,69,.25);border-radius:26px;padding:26px;max-width:600px;margin:0 auto;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.story .pick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.story .pick button{font:inherit;font-weight:800;font-size:14px;color:var(--sand);background:transparent;border:1px solid rgba(246,227,195,.3);border-radius:999px;padding:7px 14px;cursor:pointer}
+.story .pick button[aria-pressed=true]{background:var(--gold);color:var(--espresso);border-color:var(--gold)}
+.rule{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:start}
+.rule .lbl{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.rule .val{font-size:17px;color:var(--cream)}
+.rule .val strong{color:var(--gold-bright)}
+.say{margin:20px 0 0;padding:14px 16px;border-radius:16px;background:rgba(14,122,60,.28);border:1px solid rgba(14,122,60,.6);color:var(--cream);font-size:16px}
+.say span{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7fd3a0;margin-bottom:2px}
+.note{margin:14px 0 0;font-size:14px;color:var(--sand);opacity:.85}
+
+/* ---------- sections ---------- */
+section{padding:84px 0}
+.sec-head{max-width:640px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(30px,4.4vw,46px);color:var(--emerald-deep);font-weight:800}
+.sec-head p{font-size:18px;color:var(--ink-muted);margin:12px 0 0}
+
+/* day timeline */
+.day{list-style:none;margin:0;padding:0;position:relative;max-width:760px}
+.day::before{content:"";position:absolute;left:99px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(var(--gold-deep) 0 6px,transparent 6px 14px)}
+.day li{display:grid;grid-template-columns:64px 40px 1fr;gap:0 16px;align-items:center;padding:12px 0}
+.day time{font-family:var(--head);font-weight:800;font-size:20px;color:var(--burnt);text-align:right}
+.day li img{width:40px;height:40px;border-radius:10px;position:relative;box-shadow:0 0 0 4px var(--cream),0 4px 10px rgba(43,26,12,.25)}
+.day .what{background:#fff;border:1px solid var(--sand);border-radius:16px;padding:12px 16px;box-shadow:0 2px 0 var(--sand)}
+.day .what b{display:block;font-size:17px}
+.day .what span{color:var(--ink-muted);font-size:15px}
+.day .pro{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--sand);color:var(--deep-orange);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+
+/* app cards */
+.apps{background:var(--sand)}
+.cards{display:grid;grid-template-columns:1fr;gap:20px}
+.card{background:var(--cream);border-radius:26px;padding:26px;display:flex;flex-direction:column;border:1px solid rgba(169,78,20,.15)}
+.card.hubcard{background:var(--emerald-night);color:var(--cream);border-color:var(--emerald)}
+.card header{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.card header img{width:72px;height:72px;border-radius:17px;flex:none}
+.card h3{font-size:24px;font-weight:800}
+.card .line{font-weight:700;color:var(--ink-muted);font-size:15px}
+.card.hubcard .line{color:var(--gold-bright)}
+.card ul{margin:0 0 20px;padding:0 0 0 20px;flex:1}
+.card li{margin:4px 0}
+.card li::marker{color:var(--gold-deep)}
+.card .links{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.get{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);text-decoration:none;border-radius:12px;padding:10px 16px;font-weight:800;font-size:15px}
+.card.hubcard .get{background:var(--gold);color:var(--espresso)}
+.get.soon{background:transparent;color:var(--ink-muted);border:1px dashed var(--ink-muted);cursor:default}
+.card.hubcard .get.soon{color:var(--sand);border-color:var(--sand);background:transparent}
+.get svg{width:18px;height:18px}
+.small{font-size:14px;color:var(--ink-muted)}
+.card.hubcard .small{color:var(--sand)}
+
+/* together */
+.facts{display:grid;grid-template-columns:1fr;gap:16px}
+.fact{border-top:3px solid var(--gold-deep);padding-top:14px}
+.fact b{display:block;font-family:var(--head);font-size:22px;color:var(--emerald-deep);margin-bottom:4px}
+.fact span{color:var(--ink-muted)}
+
+footer{background:var(--espresso);color:var(--sand);padding:48px 0;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between}
+footer a{color:var(--gold)}
+footer h4{margin:0 0 8px;color:var(--cream);font-size:15px}
+footer p{margin:4px 0}
+
+@media (min-width:640px){
+  .cards{grid-template-columns:1fr 1fr}
+  .facts{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:980px){
+  .hero-grid{grid-template-columns:1.05fr .95fr}
+  .hero-grid .family{grid-row:span 2}
+  .story{margin:0}
+}
+@media (max-width:560px){
+  .tag{display:none}
+  .top nav a{margin-left:14px;font-size:14px}
+  .top nav a.hide-s{display:none}
+  .day::before{left:81px}
+  .day li{grid-template-columns:52px 40px 1fr;gap:0 10px}
+  .day time{font-size:17px}
+  .story{padding:20px}
+  .rule{grid-template-columns:1fr;gap:2px}
+  .rule .val{margin-bottom:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .lines .flow,.hub .led circle{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <a class="brand" href="#"><span class="dots"><i></i><i></i><i></i><i></i></span>Visagie Apps</a>
+  <nav><a href="#day" class="hide-s">A day</a><a href="#apps">The apps</a><a href="#contact">Contact</a></nav>
+</div></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">The Visagie Family of Apps</span>
+      <h1>Four apps.<br><em>One happy family.</em></h1>
+      <p class="lede">VisaSched keeps time for you – and when it's time, it calls the rest of the family in.
+        The radio starts, tonight's dinner opens, the camera is ready for the day's paperwork. No setup: install them and they find each other.</p>
+    </div>
+
+    <div class="family" id="family">
+      <svg class="lines" viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="ring" cx="50" cy="50" r="44"/>
+        <path id="p-play" class="track" d="M50 48 Q12 50 14 16"/>
+        <path id="p-cook" class="track" d="M50 48 Q88 50 86 16"/>
+        <path id="p-pdf"  class="track" d="M50 48 Q22 76 50 90"/>
+        <path class="flow" data-k="play" d="M50 48 Q12 50 14 16"/>
+        <path class="flow" data-k="cook" d="M50 48 Q88 50 86 16"/>
+        <path class="flow" data-k="pdf"  d="M50 48 Q22 76 50 90"/>
+        <circle class="spark" data-k="play" r="1.1"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p-play"/></animateMotion></circle>
+        <circle class="spark" data-k="cook" r="1.1"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-cook"/></animateMotion></circle>
+        <circle class="spark" data-k="pdf"  r="1.1"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#p-pdf"/></animateMotion></circle>
+      </svg>
+
+      <span class="tag" data-k="play" style="left:22%;top:41%">16:00 · radio on</span>
+      <span class="tag" data-k="cook" style="left:78%;top:41%">17:00 · dinner</span>
+      <span class="tag" data-k="pdf"  style="left:29%;top:76%">17:30 · paperwork</span>
+
+      <button class="node sat" data-k="play" style="left:14%;top:16%"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></button>
+      <button class="node sat" data-k="cook" style="left:86%;top:16%"><img src="img/visacook.png" alt=""><b>VisaCook</b></button>
+      <button class="node sat" data-k="pdf"  style="left:50%;top:90%"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></button>
+      <div class="node hub" style="left:50%;top:52%">
+        <span class="halo"><svg class="led" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/></svg>
+        <img src="img/visasched.png" alt=""></span><b>VisaSched</b><small>keeps time</small>
+      </div>
+    </div>
+
+    <div class="story" id="story" aria-live="polite">
+      <div class="pick" role="group" aria-label="Pick an example">
+        <button data-k="play" aria-pressed="true">Radio at 4</button>
+        <button data-k="cook" aria-pressed="false">Dinner at 5</button>
+        <button data-k="pdf" aria-pressed="false">PDF after work</button>
+      </div>
+      <div class="rule">
+        <span class="lbl">When</span><span class="val" id="s-when"></span>
+        <span class="lbl">Do</span><span class="val" id="s-do"></span>
+      </div>
+      <p class="say"><span>Or just say</span><q id="s-say"></q></p>
+      <p class="note" id="s-note"></p>
+    </div>
+  </div>
+</header>
+
+<section id="day">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>A day with the family</h2>
+      <p>Each app is good on its own. Together, your phone just knows what comes next.</p>
+    </div>
+    <ol class="day">
+      <li><time>06:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Good morning, out loud</b><span>VisaSched reads your first reminder out loud while you make coffee.</span></div></li>
+      <li><time>07:15</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Car Bluetooth connects</b><span>Your music carries on in VisaPlay, right where you stopped.</span></div></li>
+      <li><time>16:00</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Radio on <span class="pro">VisaPlay Pro</span></b><span>Your favourite station starts by itself – from South Africa or anywhere in the world.</span></div></li>
+      <li><time>17:00</time><img src="img/visacook.png" alt="VisaCook"><div class="what"><b>What's for dinner? <span class="pro">VisaCook Pro</span></b><span>VisaCook opens tonight's dinner from your week plan.</span></div></li>
+      <li><time>17:30</time><img src="img/visapdf.png" alt="VisaPdf"><div class="what"><b>Paperwork to PDF</b><span>VisaPdf's camera is ready – snap the day's slips and send one tidy PDF.</span></div></li>
+      <li><time>21:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Bedtime</b><span>VisaSched switches the phone to vibrate for the night.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="apps" id="apps">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Meet the family</h2>
+      <p>Free to download. One small banner ad. Pro is a once-off payment – no subscriptions.</p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>Better together, fine apart</h2></div>
+    <div class="facts">
+      <div class="fact"><b>No setup</b><span>Install two or more and VisaSched finds them by itself. No accounts, no linking, no sign-up.</span></div>
+      <div class="fact"><b>You stay in charge</b><span>Every app works on its own. VisaSched only opens an app when you made the rule – it never deletes or sends anything for you.</span></div>
+      <div class="fact"><b>Made in South Africa</b><span>Built by one developer and tested by real people on real phones.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div><h4>Visagie Apps</h4><p>Simple, friendly Android apps by Philip Visagie, South Africa.</p></div>
+    <div><h4>Contact</h4><p><a href="mailto:philip.visadev@gmail.com">philip.visadev@gmail.com</a></p></div>
+    <div><h4>Privacy</h4><p id="privacy"></p></div>
+  </div>
+</footer>
+
+<script>
+/* ---- Edit here: live:true when the app is public on Google Play, privacy:true when <app>/privacy.html exists ---- */
+const APPS = [
+  { name:"VisaSched", pkg:"visagie.philip.visasched", live:false, privacy:false, hub:true,
+    line:"Smart reminders – the one that keeps time",
+    points:["Reminders that read themselves out loud","Opens WhatsApp, the dialer or maps – filled in, ready to send","Starts the other Visa apps at the right moment"] },
+  { name:"VisaPlay", pkg:"visagie.philip.visaplay", live:false, privacy:false,
+    line:"Video & music player + internet radio",
+    points:["Plays almost any format – MKV, AVI, FLAC…","Internet radio from South Africa and the world","Playlists, favourites, carry on where you stopped"] },
+  { name:"VisaCook", pkg:"visagie.philip.visacook", live:false, privacy:true,
+    line:"Recipes & cocktails",
+    points:["Food and cocktail recipes, mocktails too","Change the servings – everything recalculates","Grocery list with a budget"] },
+  { name:"VisaPdf", pkg:"visagie.philip.visapdf", live:false, privacy:false,
+    line:"Photo to PDF",
+    points:["Photos or camera shots into one tidy PDF","Crop, rotate and reorder pages","Send to WhatsApp or email – several at once"] }
+];
+
+const STORIES = {
+  play:{ when:"Weekdays at <strong>16:00</strong>", act:"VisaSched starts your favourite station in <strong>VisaPlay</strong>.",
+         say:"Play the radio at 4", note:"Radio needs VisaPlay Pro. Free: carry on your music or open a playlist." },
+  cook:{ when:"Every day at <strong>17:00</strong>", act:"VisaSched opens <strong>tonight's dinner</strong> in VisaCook.",
+         say:"What's for dinner at 5", note:"The week's dinner plan is part of VisaCook Pro." },
+  pdf: { when:"Weekdays at <strong>17:30</strong>", act:"VisaSched opens the <strong>VisaPdf camera</strong> for the day's paperwork.",
+         say:"Make a PDF after work", note:"Free in both apps." }
+};
+
+const playUrl = p => "https://play.google.com/store/apps/details?id=" + p;
+const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3.5v17c0 .4.4.6.7.4L19 12.4c.3-.2.3-.6 0-.8L4.7 3.1c-.3-.2-.7 0-.7.4z"/></svg>';
+const slug = a => a.name.toLowerCase();
+
+document.getElementById("cards").innerHTML = APPS.map(a => `
+  <article class="card${a.hub ? " hubcard" : ""}">
+    <header><img src="img/${slug(a)}.png" alt=""><div><h3>${a.name}</h3><div class="line">${a.line}</div></div></header>
+    <ul>${a.points.map(p => `<li>${p}</li>`).join("")}</ul>
+    <div class="links">
+      ${a.live ? `<a class="get" href="${playUrl(a.pkg)}">${playIcon}Get it on Google Play</a>`
+               : `<span class="get soon">Coming soon to Google Play</span>`}
+      ${a.privacy ? `<a class="small" href="${slug(a)}/privacy.html">Privacy</a>` : ""}
+    </div>
+  </article>`).join("");
+
+document.getElementById("privacy").innerHTML = APPS.filter(a => a.privacy)
+  .map(a => `<a href="${slug(a)}/privacy.html">${a.name} privacy policy</a>`).join("<br>") || "Coming soon";
+
+/* ---- the family diagram: cycles through the 3 examples until the visitor picks one ---- */
+const order = ["play","cook","pdf"];
+let cur = 0, timer = null;
+function show(k){
+  document.querySelectorAll("#family [data-k]").forEach(el => el.classList.toggle("on", el.dataset.k === k));
+  document.querySelectorAll("#story .pick button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === k));
+  const s = STORIES[k];
+  document.getElementById("s-when").innerHTML = s.when;
+  document.getElementById("s-do").innerHTML = s.act;
+  document.getElementById("s-say").textContent = s.say;
+  document.getElementById("s-note").textContent = s.note;
+  cur = order.indexOf(k);
+}
+function pick(k){ clearInterval(timer); timer = null; show(k); }
+document.querySelectorAll("#family .sat, #story .pick button").forEach(el => el.addEventListener("click", () => pick(el.dataset.k)));
+
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+show("play");
+if (still) document.querySelector("#family svg.lines").pauseAnimations();
+else timer = setInterval(() => show(order[(cur + 1) % order.length]), 4500);
+</script>
+</body>
+</html>
