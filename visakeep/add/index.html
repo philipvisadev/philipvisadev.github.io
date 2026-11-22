@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Add to VisaKeep</title>
+<!-- "Send to VisaKeep" links land here: https://philipvisadev.github.io/visakeep/add/#v1.<base64url JSON>
+     The reminder lives in the part after "#", which browsers never send to this website. This page only reads it
+     in the visitor's own browser and offers "Open in VisaKeep" (visakeep://get?d=…), Google Calendar, or the app. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#FFCE45;--gold-deep:#E59A12;--deep-orange:#A94E14;--emerald:#0E7A3C;--emerald-deep:#075128;--cream:#FFF7EA;--sand:#F6E3C3;--ink:#2B1A0C;--ink-muted:#7A5A3C;--espresso:#24170C}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Nunito Sans",system-ui,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5;min-height:100vh}
+.bar{background:linear-gradient(135deg,var(--emerald),var(--emerald-deep));padding:18px 16px 54px}
+.bar div{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:10px;color:var(--cream);font-weight:800}
+.dots{display:grid;grid-template-columns:repeat(2,8px);gap:3px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+main{max-width:520px;margin:-38px auto 0;padding:0 16px 32px}
+.card{background:#fff;border:1px solid var(--sand);border-radius:24px;padding:24px 22px;box-shadow:0 10px 30px rgba(43,26,12,.12),0 0 0 3px rgba(255,206,69,.35)}
+.icon{font-size:40px;line-height:1}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(26px,7vw,34px);line-height:1.15;margin:10px 0 4px;color:var(--emerald-deep);word-break:break-word}
+.when{font-size:19px;font-weight:800;color:var(--deep-orange);margin:0}
+.meta{color:var(--ink-muted);font-weight:700;margin:6px 0 0}
+.note{background:var(--cream);border-radius:14px;padding:12px 14px;margin:16px 0 0;white-space:pre-wrap;word-break:break-word}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:17px;border-radius:999px;padding:15px 18px;margin-top:14px;border:0;cursor:pointer;width:100%}
+.gold{background:linear-gradient(135deg,#FFE28A,var(--gold),var(--gold-deep));color:#04331A;box-shadow:0 0 18px rgba(255,206,69,.55)}
+.plain{background:var(--sand);color:var(--ink)}
+.small{font-size:14px;color:var(--ink-muted);margin:18px 2px 0}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="bar"><div><span class="dots"><i></i><i></i><i></i><i></i></span> VisaKeep</div></div>
+<main>
+  <div class="card" id="card">
+    <div class="icon" id="icon">🔔</div>
+    <h1 id="title">Add to VisaKeep</h1>
+    <p class="when" id="when"></p>
+    <p class="meta" id="meta"></p>
+    <p class="note hide" id="note"></p>
+    <a class="btn gold hide" id="open" href="#">Open in VisaKeep</a>
+    <a class="btn plain hide" id="cal" href="#" rel="noopener">Add to Google Calendar instead</a>
+    <a class="btn plain" id="get" href="https://play.google.com/store/apps/details?id=visagie.philip.visakeep">Get VisaKeep (free)</a>
+  </div>
+  <p class="small" id="how">Someone sent you a reminder. Tap <b>Open in VisaKeep</b> and then <b>Add</b> – it will remind you
+    before the day. Nothing here is sent to our website: the reminder is written inside the link itself.</p>
+</main>
+<script>
+(function () {
+  var PLAY = "https://play.google.com/store/apps/details?id=visagie.philip.visakeep";
+  var $ = function (id) { return document.getElementById(id); };
+  var m = /v1\.([A-Za-z0-9_\-]+)/.exec(location.hash || "");
+  var k = null;
+  if (m) {
+    try {
+      var b = atob(m[1].replace(/-/g, "+").replace(/_/g, "/") + "===".slice((m[1].length + 3) % 4));
+      var bytes = new Uint8Array(b.length);
+      for (var i = 0; i < b.length; i++) bytes[i] = b.charCodeAt(i);
+      k = JSON.parse(new TextDecoder("utf-8").decode(bytes));
+    } catch (e) { k = null; }
+  }
+  if (!k || (!k.t && !k.d)) {
+    $("title").textContent = "This link is broken";
+    $("when").textContent = "Ask the person to send it again.";
+    $("how").textContent = "VisaKeep keeps your dates, appointments, birthdays, lists and the car's logbook – with reminders.";
+    return;
+  }
+  var icons = { Birthdays: "🎂", Appointments: "📅", Car: "🚗", Warranties: "🧾", Papers: "📄", Home: "🏠", "To do": "✅" };
+  $("icon").textContent = icons[k.c] || "🔔";
+  $("title").textContent = k.t || k.c || "Reminder";
+  document.title = "Add to VisaKeep: " + (k.t || "reminder");
+  var when = "";
+  if (k.d) {
+    var p = k.d.split("-");
+    var d = new Date(+p[0], +p[1] - 1, +p[2], 12);
+    when = d.toLocaleDateString(undefined, { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+    if (typeof k.h === "number") {
+      var t = new Date(+p[0], +p[1] - 1, +p[2], Math.floor(k.h / 60), k.h % 60);
+      when += ", " + t.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+    }
+  }
+  $("when").textContent = when;
+  var reps = { WEEKLY: "Every week", TWO_WEEKS: "Every 2 weeks", MONTHLY: "Every month", QUARTERLY: "Every 3 months", HALF_YEARLY: "Every 6 months", YEARLY: "Every year" };
+  $("meta").textContent = [k.c, reps[k.p], k.w].filter(Boolean).join(" · ");
+  if (k.n) { $("note").textContent = k.n; $("note").classList.remove("hide"); }
+
+  var android = /Android/i.test(navigator.userAgent);
+  if (android) {
+    var open = $("open");
+    open.href = "intent://get?d=v1." + m[1] + "#Intent;scheme=visakeep;S.browser_fallback_url=" + encodeURIComponent(PLAY) + ";end";
+    open.classList.remove("hide");
+    $("get").textContent = "Don't have VisaKeep? Get it free";
+  }
+  // Google Calendar for people without VisaKeep (or on an iPhone / computer). Only goes to Google if they tap it.
+  if (k.d) {
+    var ds = k.d.replace(/-/g, ""), dates;
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    if (typeof k.h === "number") {
+      var s = ds + "T" + pad(Math.floor(k.h / 60)) + pad(k.h % 60) + "00";
+      var endMin = Math.min(k.h + 60, 1439);
+      dates = s + "/" + ds + "T" + pad(Math.floor(endMin / 60)) + pad(endMin % 60) + "00";
+    } else {
+      var n = new Date(Date.UTC(+ds.slice(0, 4), +ds.slice(4, 6) - 1, +ds.slice(6, 8) + 1));
+      dates = ds + "/" + n.toISOString().slice(0, 10).replace(/-/g, "");
+    }
+    var rec = { WEEKLY: "RRULE:FREQ=WEEKLY", MONTHLY: "RRULE:FREQ=MONTHLY", YEARLY: "RRULE:FREQ=YEARLY" }[k.p];
+    var cal = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(k.t || "Reminder") +
+      "&dates=" + dates + (k.n ? "&details=" + encodeURIComponent(k.n) : "") + (rec ? "&recur=" + encodeURIComponent(rec) : "");
+    $("cal").href = cal;
+    $("cal").classList.remove("hide");
+    if (!android) $("cal").textContent = "Add to Google Calendar";
+  }
+})();
+</script>
+</body>
+</html>
