@@ -197,3 +197,6 @@ module.exports = {
     ["Why is it called VisaPdf?", "“Visa” comes from the developer's surname, Visagie. It's a general PDF app for any documents – not for visa applications."],
   ],
 };
+
+// The animated feature screens are also used by _modules/store-art (Play Store pictures).
+module.exports.M = M;
