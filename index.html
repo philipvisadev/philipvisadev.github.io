@@ -3,188 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Visagie Family of Apps</title>
-<meta name="description" content="Four Android apps that work together: VisaSched smart reminders, VisaPlay video & music player, VisaPdf photo to PDF, VisaCook recipes & cocktails. Made in South Africa.">
-<meta property="og:title" content="The Visagie Family of Apps">
-<meta property="og:description" content="Four Android apps that work as one. VisaSched keeps time and calls the others in when you need them.">
-<meta property="og:image" content="https://philipvisadev.github.io/img/visasched.png">
+<title>Visagie Apps – small apps, seriously powerful</title>
+<meta name="description" content="Four Android apps that work together: VisaPdf – the PDF office in your pocket, VisaPlay video & music player with world radio, VisaCook recipes & cocktails, VisaSched smart reminders. Made in South Africa.">
+<meta property="og:title" content="Visagie Apps – small apps, seriously powerful">
+<meta property="og:description" content="VisaPdf, VisaPlay, VisaCook and VisaSched: four powerful Android apps that work as one. Free, with a once-off Pro.">
+<meta property="og:image" content="https://philipvisadev.github.io/img/visapdf.png">
+<meta name="theme-color" content="#24170C">
 <link rel="icon" href="img/visasched.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/mocks.css">
+<script>document.documentElement.classList.add("js")</script>
 <style>
-:root{
-  --gold:#FFCE45;--gold-bright:#FFE28A;--gold-deep:#E59A12;--saffron:#E6A54A;--burnt:#C8641E;--deep-orange:#A94E14;
-  --emerald:#0E7A3C;--emerald-deep:#075128;--emerald-night:#04331A;
-  --cream:#FFF7EA;--sand:#F6E3C3;--ink:#2B1A0C;--ink-muted:#7A5A3C;--espresso:#24170C;--espresso-light:#34230F;
-  --head:"Fraunces",Georgia,serif;--body:"Nunito Sans",system-ui,"Segoe UI",Arial,sans-serif;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.55;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:var(--deep-orange)}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
-
-/* ---------- top bar ---------- */
-.top{position:absolute;inset:0 0 auto;z-index:5}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;align-items:center;gap:10px;color:var(--cream);text-decoration:none;font-weight:800;letter-spacing:.02em}
-.brand .dots{display:grid;grid-template-columns:repeat(2,9px);gap:4px}
-.brand .dots i{width:9px;height:9px;border-radius:50%;background:var(--gold)}
-.brand .dots i:nth-child(2){background:var(--saffron)}.brand .dots i:nth-child(3){background:var(--emerald)}.brand .dots i:nth-child(4){background:var(--gold-bright)}
-.top nav a{color:var(--sand);text-decoration:none;font-weight:700;margin-left:22px;font-size:15px}
-.top nav a:hover{color:var(--gold)}
-
-/* ---------- hero ---------- */
-.hero{position:relative;background:var(--espresso);color:var(--cream);padding:96px 0 72px;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:900px;z-index:-1;
-  background:radial-gradient(closest-side at 50% 52%,rgba(230,165,74,.42),rgba(169,78,20,.18) 55%,transparent 75%)}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:120px;z-index:-1;
-  background:linear-gradient(transparent,rgba(4,51,26,.55))}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
-.kicker{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.hero h1{font-size:clamp(38px,6.4vw,72px);font-weight:800;letter-spacing:-.01em}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.lede{font-size:clamp(17px,2vw,20px);color:var(--sand);max-width:34em;margin:18px 0 0}
-
-/* ---------- the family diagram ---------- */
-.family{position:relative;width:100%;max-width:600px;aspect-ratio:1;margin:0 auto}
+/* ---------- the family diagram (home only) ---------- */
+.family{position:relative;width:100%;max-width:560px;aspect-ratio:1;margin:0 auto}
 .family svg.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .lines .track{fill:none;stroke:rgba(255,206,69,.22);stroke-width:.5}
 .lines .flow{fill:none;stroke:var(--gold);stroke-width:.55;stroke-linecap:round;stroke-dasharray:.2 2.2;opacity:.45;animation:flow 1.6s linear infinite;transition:opacity .4s,stroke-width .4s}
 .lines .flow.on{opacity:1;stroke-width:.9}
 @keyframes flow{to{stroke-dashoffset:-2.4}}
-.lines .spark{fill:var(--gold-bright);opacity:.5;transition:opacity .4s}
-.lines .spark.on{opacity:1}
+.lines .spark{fill:var(--gold-bright);opacity:.5;transition:opacity .4s}.lines .spark.on{opacity:1}
 .lines .ring{fill:none;stroke:rgba(255,206,69,.12);stroke-width:.35;stroke-dasharray:1 1.6}
-
 .node{position:absolute;transform:translate(-50%,-50%);border:0;padding:0;background:none;cursor:pointer;color:var(--cream);font:inherit;text-align:center}
 .node img{width:100%;border-radius:23%;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .35s,box-shadow .35s}
 .node b{display:block;margin-top:8px;font-weight:800;font-size:clamp(12px,1.8vw,16px);letter-spacing:.02em}
 .node:hover img,.node.on img{transform:scale(1.06);box-shadow:0 0 0 3px var(--gold),0 0 36px rgba(255,206,69,.55),0 10px 30px rgba(0,0,0,.45)}
-.node:focus-visible{outline:3px solid var(--gold);outline-offset:6px;border-radius:20px}
-.sat{width:18%}
-.hub{width:25%;cursor:default}
+.sat{width:18%}.hub{width:25%;cursor:default}
 .hub .halo{position:relative;display:block}
 .hub .led{position:absolute;inset:-15%;width:130%;height:130%;pointer-events:none}
 .hub .led circle{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:0 9.2;animation:spin 14s linear infinite;transform-origin:50% 50%;filter:drop-shadow(0 0 2px var(--gold))}
-@keyframes spin{to{transform:rotate(360deg)}}
 .hub b{margin-top:18%;font-size:clamp(14px,2.2vw,19px);color:var(--gold)}
 .hub small{display:block;color:var(--sand);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-
 .tag{position:absolute;transform:translate(-50%,-50%);background:rgba(36,23,12,.85);border:1px solid rgba(255,206,69,.35);color:var(--gold-bright);
   font-weight:800;font-size:13px;padding:5px 11px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:background .4s,color .4s,border-color .4s}
 .tag.on{background:var(--gold);color:var(--espresso);border-color:var(--gold)}
+@media (max-width:560px){.tag{display:none}}
 
 /* story card */
-.story{background:linear-gradient(160deg,var(--espresso-light),#2a1b0d);border:1px solid rgba(255,206,69,.25);border-radius:26px;padding:26px;max-width:600px;margin:0 auto;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.story{background:linear-gradient(160deg,var(--espresso-light),#2a1b0d);color:var(--cream);border:1px solid rgba(255,206,69,.25);border-radius:26px;padding:26px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 .story .pick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .story .pick button{font:inherit;font-weight:800;font-size:14px;color:var(--sand);background:transparent;border:1px solid rgba(246,227,195,.3);border-radius:999px;padding:7px 14px;cursor:pointer}
 .story .pick button[aria-pressed=true]{background:var(--gold);color:var(--espresso);border-color:var(--gold)}
 .rule{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:start}
 .rule .lbl{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-top:3px}
-.rule .val{font-size:17px;color:var(--cream)}
-.rule .val strong{color:var(--gold-bright)}
-.say{margin:20px 0 0;padding:14px 16px;border-radius:16px;background:rgba(14,122,60,.28);border:1px solid rgba(14,122,60,.6);color:var(--cream);font-size:16px}
-.say span{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7fd3a0;margin-bottom:2px}
+.rule .val{font-size:17px}.rule .val strong{color:var(--gold-bright)}
+.say{margin:20px 0 0;padding:14px 16px;border-radius:16px;background:rgba(14,122,60,.28);border:1px solid rgba(14,122,60,.6);font-size:16px}
+.say span{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin-bottom:2px}
 .note{margin:14px 0 0;font-size:14px;color:var(--sand);opacity:.85}
+@media (max-width:560px){.story{padding:20px}.rule{grid-template-columns:1fr;gap:2px}.rule .val{margin-bottom:8px}}
 
-/* ---------- sections ---------- */
-section{padding:84px 0}
-.sec-head{max-width:640px;margin-bottom:40px}
-.sec-head h2{font-size:clamp(30px,4.4vw,46px);color:var(--emerald-deep);font-weight:800}
-.sec-head p{font-size:18px;color:var(--ink-muted);margin:12px 0 0}
+/* VisaPdf spotlight */
+.spot{display:grid;gap:40px;align-items:center}
+@media (min-width:980px){.spot{grid-template-columns:1.1fr .9fr}}
+.spot .minis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.spot .mini-s{position:relative;height:clamp(150px,22vw,220px);border-radius:18px;overflow:hidden;border:1px solid rgba(255,206,69,.3);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.spot .mini-s .mock{transform:scale(.82);transform-origin:top center;inset:0 -11%;width:122%}
+.spot .mini-s b{position:absolute;left:8px;bottom:8px;z-index:6;background:rgba(36,23,12,.85);color:var(--gold-bright);font-size:12px;border-radius:999px;padding:3px 9px}
+.spot .list{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:10px}
+.spot .list li{display:flex;gap:12px;align-items:center;font-weight:700;font-size:17px}
+.spot .list li i{font-style:normal;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(255,206,69,.12);border:1px solid rgba(255,206,69,.3);flex:none}
+@media (max-width:560px){.spot .minis{grid-template-columns:1fr 1fr}.spot .mini-s:nth-child(3){display:none}}
 
-/* day timeline */
-.day{list-style:none;margin:0;padding:0;position:relative;max-width:760px}
+/* app rows */
+.approw{display:grid;gap:36px;align-items:center;padding:30px 0}
+@media (min-width:900px){.approw{grid-template-columns:360px 1fr;gap:70px}.approw.flip{grid-template-columns:1fr 360px}.approw.flip .ph{order:2}}
+.approw .ph{display:flex;justify-content:center;position:relative}
+.approw .ph::before{content:"";position:absolute;width:300px;height:300px;top:50%;left:50%;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(230,165,74,.5),transparent 70%);z-index:0}
+.approw .ph .phone{z-index:1}
+.approw header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.approw header img{width:70px;height:70px;border-radius:18px;box-shadow:0 8px 20px rgba(43,26,12,.25)}
+.approw h3{font-size:clamp(30px,4vw,44px);font-weight:800;color:var(--emerald-deep)}
+.approw .line{font-weight:800;color:var(--burnt);font-size:16px}
+.approw p.big{font-size:19px;color:var(--ink-muted);max-width:32em}
+.approw ul{list-style:none;padding:0;margin:20px 0 26px;display:grid;gap:10px}
+.approw li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.approw li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(255,206,69,.25);flex:none}
+
+/* Pro cards */
+.procards{display:grid;gap:18px}
+@media (min-width:700px){.procards{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.procards{grid-template-columns:repeat(4,1fr)}}
+.procard{border-radius:24px;padding:22px;background:linear-gradient(170deg,rgba(255,206,69,.14),rgba(255,206,69,.03));border:1px solid rgba(255,206,69,.3);color:var(--cream);display:flex;flex-direction:column}
+.procard header{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.procard header img{width:46px;height:46px;border-radius:13px}
+.procard h3{font-size:21px}
+.procard ul{margin:0 0 18px;padding-left:18px;flex:1;color:var(--sand)}
+.procard li{margin:5px 0}.procard li::marker{color:var(--gold)}
+.procard a{color:var(--gold);font-weight:800;text-decoration:none}
+
+/* day timeline + family cards */
+.day{list-style:none;margin:0;padding:0;position:relative}
 .day::before{content:"";position:absolute;left:99px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(var(--gold-deep) 0 6px,transparent 6px 14px)}
-.day li{display:grid;grid-template-columns:64px 40px 1fr;gap:0 16px;align-items:center;padding:12px 0}
+.day li{display:grid;grid-template-columns:64px 40px 1fr;gap:0 16px;align-items:center;padding:10px 0}
 .day time{font-family:var(--head);font-weight:800;font-size:20px;color:var(--burnt);text-align:right}
 .day li img{width:40px;height:40px;border-radius:10px;position:relative;box-shadow:0 0 0 4px var(--cream),0 4px 10px rgba(43,26,12,.25)}
-.day .what{background:#fff;border:1px solid var(--sand);border-radius:16px;padding:12px 16px;box-shadow:0 2px 0 var(--sand)}
-.day .what b{display:block;font-size:17px}
-.day .what span{color:var(--ink-muted);font-size:15px}
-.day .pro{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--sand);color:var(--deep-orange);border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
-
-/* app cards */
-.apps{background:var(--sand)}
+.day .what{background:#fff;border:1px solid var(--sand);border-radius:16px;padding:11px 15px;box-shadow:0 2px 0 var(--sand)}
+.day .what b{display:block;font-size:17px}.day .what span{color:var(--ink-muted);font-size:15px}
+@media (max-width:560px){.day::before{left:81px}.day li{grid-template-columns:52px 40px 1fr;gap:0 10px}.day time{font-size:17px}}
+.together{display:grid;gap:40px;align-items:start}
+@media (min-width:980px){.together{grid-template-columns:1fr 1fr}}
 .cards{display:grid;grid-template-columns:1fr;gap:20px}
+@media (min-width:640px){.cards{grid-template-columns:1fr 1fr}}
 .card{background:var(--cream);border-radius:26px;padding:26px;display:flex;flex-direction:column;border:1px solid rgba(169,78,20,.15)}
 .card.hubcard{background:var(--emerald-night);color:var(--cream);border-color:var(--emerald)}
 .card header{display:flex;align-items:center;gap:16px;margin-bottom:14px}
 .card header img{width:72px;height:72px;border-radius:17px;flex:none}
 .card h3{font-size:24px;font-weight:800}
-.card .line{font-weight:700;color:var(--ink-muted);font-size:15px}
-.card.hubcard .line{color:var(--gold-bright)}
-.card ul{margin:0 0 20px;padding:0 0 0 20px;flex:1}
-.card li{margin:4px 0}
-.card li::marker{color:var(--gold-deep)}
+.card .line{font-weight:700;color:var(--ink-muted);font-size:15px}.card.hubcard .line{color:var(--gold-bright)}
+.card ul{margin:0 0 20px;padding:0 0 0 20px;flex:1}.card li{margin:4px 0}.card li::marker{color:var(--gold-deep)}
 .card .links{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.get{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);text-decoration:none;border-radius:12px;padding:10px 16px;font-weight:800;font-size:15px}
-.card.hubcard .get{background:var(--gold);color:var(--espresso)}
-.get.soon{background:transparent;color:var(--ink-muted);border:1px dashed var(--ink-muted);cursor:default}
-.card.hubcard .get.soon{color:var(--sand);border-color:var(--sand);background:transparent}
-.get svg{width:18px;height:18px}
-.small{font-size:14px;color:var(--ink-muted)}
-.card.hubcard .small{color:var(--sand)}
-
-/* together */
+.card .small{font-size:14px;color:var(--ink-muted);font-weight:700}.card.hubcard .small{color:var(--sand)}
+.card.hubcard .soon{color:var(--sand)}
 .facts{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:640px){.facts{grid-template-columns:repeat(3,1fr)}}
 .fact{border-top:3px solid var(--gold-deep);padding-top:14px}
 .fact b{display:block;font-family:var(--head);font-size:22px;color:var(--emerald-deep);margin-bottom:4px}
 .fact span{color:var(--ink-muted)}
-
-footer{background:var(--espresso);color:var(--sand);padding:48px 0;font-size:15px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between}
-footer a{color:var(--gold)}
-footer h4{margin:0 0 8px;color:var(--cream);font-size:15px}
-footer p{margin:4px 0}
-
-@media (min-width:640px){
-  .cards{grid-template-columns:1fr 1fr}
-  .facts{grid-template-columns:repeat(3,1fr)}
-}
-@media (min-width:980px){
-  .hero-grid{grid-template-columns:1.05fr .95fr}
-  .hero-grid .family{grid-row:span 2}
-  .story{margin:0}
-}
-@media (max-width:560px){
-  .tag{display:none}
-  .top nav a{margin-left:14px;font-size:14px}
-  .top nav a.hide-s{display:none}
-  .day::before{left:81px}
-  .day li{grid-template-columns:52px 40px 1fr;gap:0 10px}
-  .day time{font-size:17px}
-  .story{padding:20px}
-  .rule{grid-template-columns:1fr;gap:2px}
-  .rule .val{margin-bottom:8px}
-}
-@media (prefers-reduced-motion:reduce){
-  .lines .flow,.hub .led circle{animation:none}
-  html{scroll-behavior:auto}
-}
+@media (prefers-reduced-motion:reduce){.lines .flow,.hub .led circle{animation:none}}
 </style>
 </head>
-<body>
+<body data-root="">
 
-<div class="top"><div class="wrap">
-  <a class="brand" href="#"><span class="dots"><i></i><i></i><i></i><i></i></span>Visagie Apps</a>
-  <nav><a href="#day" class="hide-s">A day</a><a href="#apps">The apps</a><a href="#contact">Contact</a></nav>
-</div></div>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="./" aria-current="page"><span class="dots"><i></i><i></i><i></i><i></i></span><span class="t">Visagie Apps</span></a>
+  <nav aria-label="Apps"><a href="visapdf/"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></a><a href="visaplay/"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></a><a href="visacook/"><img src="img/visacook.png" alt=""><b>VisaCook</b></a><a href="visasched/"><img src="img/visasched.png" alt=""><b>VisaSched</b></a></nav>
+</div></header>
 
-<header class="hero">
+<main>
+<section class="hero"><div class="glow"></div><div class="ledgrid" data-par="0.08"></div>
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker">The Visagie Family of Apps</span>
-      <h1>Four apps.<br><em>One happy family.</em></h1>
-      <p class="lede">VisaSched keeps time for you – and when it's time, it calls the rest of the family in.
-        The radio starts, tonight's dinner opens, the camera is ready for the day's paperwork. No setup: install them and they find each other.</p>
+      <span class="kicker rv"><span class="live"></span>The Visagie Family of Apps</span>
+      <h1 class="rv d1">Small apps.<br><span class="shine">Seriously powerful.</span></h1>
+      <p class="lede rv d2">A PDF office in your pocket. A player that plays everything. A kitchen that plans itself. A phone on autopilot.
+        Four Android apps that work on their own – and together they feel like magic.</p>
+      <div class="cta-row rv d3"><a class="btn btn-gold" href="visapdf/">✨ See what's new in VisaPdf</a><a class="btn btn-ghost" href="#apps">Meet the family ↓</a></div>
+      <div class="chips rv d4"><span class="chip">🔒 Nothing uploaded</span><span class="chip">🆓 Free to try</span><span class="chip">⭐ Pro once-off – no subscription</span><span class="chip">🇿🇦 Made in South Africa</span></div>
     </div>
 
-    <div class="family" id="family">
+    <div class="family rv z d2" id="family">
       <svg class="lines" viewBox="0 0 100 100" aria-hidden="true">
         <circle class="ring" cx="50" cy="50" r="44"/>
         <path id="p-play" class="track" d="M50 48 Q12 50 14 16"/>
@@ -197,11 +156,9 @@ footer p{margin:4px 0}
         <circle class="spark" data-k="cook" r="1.1"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-cook"/></animateMotion></circle>
         <circle class="spark" data-k="pdf"  r="1.1"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#p-pdf"/></animateMotion></circle>
       </svg>
-
       <span class="tag" data-k="play" style="left:22%;top:41%">16:00 · radio on</span>
       <span class="tag" data-k="cook" style="left:78%;top:41%">17:00 · dinner</span>
       <span class="tag" data-k="pdf"  style="left:29%;top:76%">17:30 · paperwork</span>
-
       <button class="node sat" data-k="play" style="left:14%;top:16%"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></button>
       <button class="node sat" data-k="cook" style="left:86%;top:16%"><img src="img/visacook.png" alt=""><b>VisaCook</b></button>
       <button class="node sat" data-k="pdf"  style="left:50%;top:90%"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></button>
@@ -210,83 +167,171 @@ footer p{margin:4px 0}
         <img src="img/visasched.png" alt=""></span><b>VisaSched</b><small>keeps time</small>
       </div>
     </div>
-
-    <div class="story" id="story" aria-live="polite">
-      <div class="pick" role="group" aria-label="Pick an example">
-        <button data-k="play" aria-pressed="true">Radio at 4</button>
-        <button data-k="cook" aria-pressed="false">Dinner at 5</button>
-        <button data-k="pdf" aria-pressed="false">PDF after work</button>
-      </div>
-      <div class="rule">
-        <span class="lbl">When</span><span class="val" id="s-when"></span>
-        <span class="lbl">Do</span><span class="val" id="s-do"></span>
-      </div>
-      <p class="say"><span>Or just say</span><q id="s-say"></q></p>
-      <p class="note" id="s-note"></p>
-    </div>
-  </div>
-</header>
-
-<section id="day">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>A day with the family</h2>
-      <p>Each app is good on its own. Together, your phone just knows what comes next.</p>
-    </div>
-    <ol class="day">
-      <li><time>06:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Good morning, out loud</b><span>VisaSched reads your first reminder out loud while you make coffee.</span></div></li>
-      <li><time>07:15</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Car Bluetooth connects</b><span>Your music carries on in VisaPlay, right where you stopped.</span></div></li>
-      <li><time>16:00</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Radio on <span class="pro">VisaPlay Pro</span></b><span>Your favourite station starts by itself – from South Africa or anywhere in the world.</span></div></li>
-      <li><time>17:00</time><img src="img/visacook.png" alt="VisaCook"><div class="what"><b>What's for dinner? <span class="pro">VisaCook Pro</span></b><span>VisaCook opens tonight's dinner from your week plan.</span></div></li>
-      <li><time>17:30</time><img src="img/visapdf.png" alt="VisaPdf"><div class="what"><b>Paperwork to PDF</b><span>VisaPdf's camera is ready – snap the day's slips and send one tidy PDF.</span></div></li>
-      <li><time>21:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Bedtime</b><span>VisaSched switches the phone to vibrate for the night.</span></div></li>
-    </ol>
   </div>
 </section>
 
-<section class="apps" id="apps">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Meet the family</h2>
-      <p>Free to download. One small banner ad. Pro is a once-off payment – no subscriptions.</p>
+<div class="ticker" aria-hidden="true"><div class="run">
+  <span>Photos to PDF</span><span>ID card scan</span><span>Sign &amp; fill PDFs</span><span>Word · Excel · PowerPoint</span><span>Plays MKV, AVI, FLAC</span><span>World radio</span><span>Cast to TV</span><span>Recipes &amp; cocktails</span><span>Grocery list with a budget</span><span>Hands-free Cook mode</span><span>Reminders that read aloud</span><span>“Call Mom at 3 pm”</span>
+  <span>Photos to PDF</span><span>ID card scan</span><span>Sign &amp; fill PDFs</span><span>Word · Excel · PowerPoint</span><span>Plays MKV, AVI, FLAC</span><span>World radio</span><span>Cast to TV</span><span>Recipes &amp; cocktails</span><span>Grocery list with a budget</span><span>Hands-free Cook mode</span><span>Reminders that read aloud</span><span>“Call Mom at 3 pm”</span>
+</div></div>
+
+<!-- ===== VisaPdf spotlight ===== -->
+<section class="dark" id="visapdf">
+  <div class="wrap spot">
+    <div>
+      <div class="sec-head rv" style="margin-bottom:26px"><span class="kicker"><span class="new-tag" style="margin:0">New</span> VisaPdf 1.2</span>
+        <h2>The whole <span class="shine">PDF office</span> in your pocket.</h2>
+        <p>VisaPdf grew up. It still turns photos into a tidy PDF in seconds – and now it scans ID cards, reads QR codes, stamps the time on photos, signs contracts and turns PDFs into Word and Excel. All on your phone.</p></div>
+      <div class="minis rv d1">
+        <div class="mini-s"><div class="mock m-id" role="img" aria-label="ID card front and back on one page"><div class="bar-top">ID card</div><div class="page"><div class="card front"><i></i><s></s><s></s><s></s><b>IDENTITY CARD</b></div><div class="card back"><s></s><i></i></div></div><div class="beam"></div></div><b>ID card</b></div>
+        <div class="mini-s"><div class="mock m-sign" role="img" aria-label="A PDF is signed and stamped PAID"><div class="bar-top">PDF studio</div><div class="page"><span class="ln" style="width:90%"></span><span class="ln" style="width:70%"></span><span class="ln" style="width:84%"></span><span class="ln" style="width:60%"></span><i class="hl"></i><svg class="sig" viewBox="0 0 120 44" aria-hidden="true"><path d="M4 30c8-18 14-24 16-18s-6 22-2 22 10-26 16-24-2 20 2 20 8-14 12-14 2 12 6 12 8-10 14-10 6 6 10 6 14-4 18-6"/></svg><span class="paid">PAID</span></div><div class="tools"><i>✍️</i><i>🖍️</i><i>T</i><i>🔒</i></div></div><b>Sign &amp; stamp</b></div>
+        <div class="mini-s"><div class="mock m-office" role="img" aria-label="A PDF turns into Word, Excel and PowerPoint"><div class="bar-top">Save as…</div><div class="page"><span class="ln" style="width:90%"></span><span class="ln" style="width:70%"></span><span class="ln" style="width:84%"></span><span class="ln" style="width:60%"></span></div><div class="flow"></div><div class="outs"><div class="o w"><i>W</i>Word</div><div class="o x"><i>X</i>Excel</div><div class="o p"><i>P</i>PowerPoint</div></div></div><b>Word · Excel</b></div>
+      </div>
+      <ul class="list">
+        <li class="rv d1"><i>🪪</i>ID card – front &amp; back on one page, turned straight</li>
+        <li class="rv d2"><i>▦</i>QR &amp; barcodes – with links you can tap in the PDF</li>
+        <li class="rv d3"><i>⏱</i>Time stamp camera – proof of when</li>
+        <li class="rv d4"><i>✍️</i>Sign, fill in forms, open password PDFs</li>
+      </ul>
+      <div class="cta-row rv"><a class="btn btn-gold" href="visapdf/">See all 9 superpowers →</a><span data-play="visagie.philip.visapdf"><a class="btn btn-play" href="https://play.google.com/store/apps/details?id=visagie.philip.visapdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 2.3 13.4 12l-9.8 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.5.8-1.7 0-2.2z"/><path fill="#4285F4" d="M3.6 21.7 13.4 12l3.4 3.4-11.5 6.5c-.6.3-1.2.2-1.7-.2z"/><path fill="#EA4335" d="M3.6 2.3c.5-.4 1.1-.5 1.7-.2l11.5 6.5-3.4 3.4z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a></span></div>
     </div>
+    <div class="stage rv z d2">
+      <div class="phone sm p-l float d1"><div class="scr"><img src="shots/visapdf/s3.webp" alt="" loading="lazy" width="480" height="960"></div><div class="glare"></div></div>
+      <div class="phone sm p-r float d2"><div class="scr"><img src="shots/visapdf/p09.webp" alt="" loading="lazy" width="480" height="960"></div><div class="glare"></div></div>
+      <div class="phone p-c float" data-led><div class="scr" data-cycle="2600">
+        <img src="shots/visapdf/s1.webp" alt="VisaPdf home screen" class="on" loading="lazy" width="480" height="960"><img src="shots/visapdf/s2.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visapdf/s4.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visapdf/s5.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visapdf/s7.webp" alt="" loading="lazy" width="480" height="960">
+      </div><div class="glare"></div></div>
+      <span class="orbit" style="left:0;top:12%">✓ Your PDF is ready!</span>
+      <span class="orbit g" style="right:0;top:60%;animation-delay:-2s">🔒 Stays on your phone</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== the other apps ===== -->
+<section class="light" id="apps">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kicker">The family</span><h2>Each one a powerhouse.</h2><p>Free to download, one small banner ad. Every app has a full tutorial – tap through and see what it can do.</p></div>
+
+    <article class="approw">
+      <div class="ph rv l"><div class="phone tilt"><div class="scr" data-cycle="2800">
+        <img src="shots/visaplay/s1.webp" alt="VisaPlay video library" class="on" loading="lazy" width="480" height="960"><img src="shots/visaplay/p08.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visaplay/s3.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visaplay/p10.webp" alt="" loading="lazy" width="480" height="960">
+      </div><div class="glare"></div></div></div>
+      <div class="rv r">
+        <header><img src="img/visaplay.png" alt=""><div><h3>VisaPlay</h3><div class="line">Video &amp; music player + world radio</div></div></header>
+        <p class="big">Plays the files other players give up on – MKV, AVI, FLAC, Dolby sound, styled subtitles. Then it goes further.</p>
+        <ul><li>Thousands of radio stations – local and world-wide <span class="pro-tag">Pro</span></li><li>Cast to your TV, play movies from your PC or NAS <span class="pro-tag">Pro</span></li><li>Free playlists, music visuals, voice notes sorted by who's talking</li></ul>
+        <div class="cta-row"><a class="btn btn-gold" href="visaplay/">Tutorial &amp; Pro →</a><span data-play="visagie.philip.visaplay"><a class="btn btn-play" href="https://play.google.com/store/apps/details?id=visagie.philip.visaplay"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 2.3 13.4 12l-9.8 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.5.8-1.7 0-2.2z"/><path fill="#4285F4" d="M3.6 21.7 13.4 12l3.4 3.4-11.5 6.5c-.6.3-1.2.2-1.7-.2z"/><path fill="#EA4335" d="M3.6 2.3c.5-.4 1.1-.5 1.7-.2l11.5 6.5-3.4 3.4z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a></span></div>
+      </div>
+    </article>
+
+    <article class="approw flip">
+      <div class="ph rv r"><div class="phone tilt"><div class="scr" data-cycle="2800">
+        <img src="shots/visacook/s1.webp" alt="VisaCook home screen" class="on" loading="lazy" width="480" height="960"><img src="shots/visacook/s4.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visacook/s5.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visacook/s6.webp" alt="" loading="lazy" width="480" height="960">
+      </div><div class="glare"></div></div></div>
+      <div class="rv l">
+        <header><img src="img/visacook.png" alt=""><div><h3>VisaCook</h3><div class="line">Recipes, cocktails &amp; groceries</div></div></header>
+        <p class="big">Recipes and cocktails from around the world, amounts that work themselves out, and Ouma's recipe card scanned in a snap.</p>
+        <ul><li>Servings calculator – cooking for 7 instead of 4? Sorted.</li><li>Hands-free Cook mode – just say “next” <span class="pro-tag">Pro</span></li><li>Grocery list with a budget and a month's dinner plan <span class="pro-tag">Pro</span></li></ul>
+        <div class="cta-row"><a class="btn btn-gold" href="visacook/">Tutorial &amp; Pro →</a><span data-play="visagie.philip.visacook"><a class="btn btn-play" href="https://play.google.com/store/apps/details?id=visagie.philip.visacook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 2.3 13.4 12l-9.8 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.5.8-1.7 0-2.2z"/><path fill="#4285F4" d="M3.6 21.7 13.4 12l3.4 3.4-11.5 6.5c-.6.3-1.2.2-1.7-.2z"/><path fill="#EA4335" d="M3.6 2.3c.5-.4 1.1-.5 1.7-.2l11.5 6.5-3.4 3.4z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a></span></div>
+      </div>
+    </article>
+
+    <article class="approw">
+      <div class="ph rv l"><div class="phone tilt"><div class="scr" data-cycle="2800">
+        <img src="shots/visasched/s1.webp" alt="VisaSched automations" class="on" loading="lazy" width="480" height="960"><img src="shots/visasched/s2.webp" alt="" loading="lazy" width="480" height="960"><img src="shots/visasched/s5.webp" alt="" loading="lazy" width="480" height="960">
+      </div><div class="glare"></div></div></div>
+      <div class="rv r">
+        <header><img src="img/visasched.png" alt=""><div><h3>VisaSched</h3><div class="line">Smart reminders – the one that keeps time</div></div></header>
+        <p class="big">Say “Call Mom at 3 pm” and it's done. Reminders that read themselves aloud and get WhatsApp, the dialer or maps ready for you.</p>
+        <ul><li>Charger, battery, Wi-Fi and car Bluetooth triggers</li><li>Starts VisaPlay's radio, VisaCook's dinner and VisaPdf's camera on time</li><li>Messages read aloud while you drive, calendar quiet time <span class="pro-tag">Pro</span></li></ul>
+        <div class="cta-row"><a class="btn btn-gold" href="visasched/">Tutorial &amp; Pro →</a><span data-play="visagie.philip.visasched"><a class="btn btn-play" href="https://play.google.com/store/apps/details?id=visagie.philip.visasched"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 2.3 13.4 12l-9.8 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.5.8-1.7 0-2.2z"/><path fill="#4285F4" d="M3.6 21.7 13.4 12l3.4 3.4-11.5 6.5c-.6.3-1.2.2-1.7-.2z"/><path fill="#EA4335" d="M3.6 2.3c.5-.4 1.1-.5 1.7-.2l11.5 6.5-3.4 3.4z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a></span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== better together ===== -->
+<section class="sandbg" id="day">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kicker">Better together</span><h2>A day with the family.</h2><p>Each app is great on its own. Install two or more and VisaSched calls the others in at the right moment – no setup.</p></div>
+    <div class="together">
+      <ol class="day">
+        <li class="rv"><time>06:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Good morning, out loud</b><span>VisaSched reads your first reminder while you make coffee.</span></div></li>
+        <li class="rv d1"><time>07:15</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Car Bluetooth connects</b><span>Your music carries on in VisaPlay, right where you stopped.</span></div></li>
+        <li class="rv d2"><time>10:00</time><img src="img/visapdf.png" alt="VisaPdf"><div class="what"><b>Sign the lease</b><span>Open the PDF from WhatsApp in VisaPdf, sign with your finger, send it back.</span></div></li>
+        <li class="rv d3"><time>16:00</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Radio on <span class="pro-tag">Pro</span></b><span>Your favourite station starts by itself.</span></div></li>
+        <li class="rv d4"><time>17:00</time><img src="img/visacook.png" alt="VisaCook"><div class="what"><b>What's for dinner? <span class="pro-tag">Pro</span></b><span>VisaCook opens tonight's dinner from your plan.</span></div></li>
+        <li class="rv d5"><time>21:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Bedtime</b><span>Charger in – VisaSched switches the phone to vibrate.</span></div></li>
+      </ol>
+      <div class="story rv r" id="story" aria-live="polite">
+        <div class="pick" role="group" aria-label="Pick an example">
+          <button data-k="play" aria-pressed="true">Radio at 4</button>
+          <button data-k="cook" aria-pressed="false">Dinner at 5</button>
+          <button data-k="pdf" aria-pressed="false">PDF after work</button>
+        </div>
+        <div class="rule">
+          <span class="lbl">When</span><span class="val" id="s-when"></span>
+          <span class="lbl">Do</span><span class="val" id="s-do"></span>
+        </div>
+        <p class="say"><span>Or just say</span><q id="s-say"></q></p>
+        <p class="note" id="s-note"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pro ===== -->
+<section class="green" id="pro">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="kicker">Pro</span><h2>Pay once. <span class="shine">Keep it forever.</span></h2>
+      <p>Every app is free with one small banner ad. Pro removes the ad and unlocks the big tools – a once-off payment of about R49.99 (≈ $2.99) per app. No subscriptions. Ever.</p></div>
+    <div class="procards">
+      <div class="procard rv d1" data-led><header><img src="img/visapdf.png" alt=""><h3>VisaPdf Pro</h3></header><ul><li>Word, Excel &amp; PowerPoint</li><li>Scan a list to Excel</li><li>Draw, highlight, whiteout, page tools</li><li>Lock PDFs with a password</li></ul><a href="visapdf/#pro">Free vs Pro →</a></div>
+      <div class="procard rv d2" data-led><header><img src="img/visaplay.png" alt=""><h3>VisaPlay Pro</h3></header><ul><li>World radio</li><li>Cast to your TV</li><li>Play from PC &amp; NAS</li><li>Equaliser &amp; bass boost</li></ul><a href="visaplay/#pro">Free vs Pro →</a></div>
+      <div class="procard rv d3" data-led><header><img src="img/visacook.png" alt=""><h3>VisaCook Pro</h3></header><ul><li>Hands-free Cook mode</li><li>Dinner plan for the month</li><li>Grocery list with a budget</li><li>Recipe to PDF</li></ul><a href="visacook/#pro">Free vs Pro →</a></div>
+      <div class="procard rv d4" data-led><header><img src="img/visasched.png" alt=""><h3>VisaSched Pro</h3></header><ul><li>Unlimited automations</li><li>Messages read aloud</li><li>Calendar &amp; shake triggers</li><li>Do Not Disturb &amp; loud alarm</li></ul><a href="visasched/#pro">Free vs Pro →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== cards from apps.json (the apps' "More Visa apps" screen reads the same file) ===== -->
+<section class="sandbg" id="family-cards">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Get the apps</h2><p>All four on Google Play. Pro is a once-off payment – no subscriptions.</p></div>
     <div class="cards" id="cards"></div>
   </div>
 </section>
 
-<section>
+<section class="light">
   <div class="wrap">
-    <div class="sec-head"><h2>Better together, fine apart</h2></div>
     <div class="facts">
-      <div class="fact"><b>No setup</b><span>Install two or more and VisaSched finds them by itself. No accounts, no linking, no sign-up.</span></div>
-      <div class="fact"><b>You stay in charge</b><span>Every app works on its own. VisaSched only opens an app when you made the rule – it never deletes or sends anything for you.</span></div>
-      <div class="fact"><b>Made in South Africa</b><span>Built by one developer and tested by real people on real phones.</span></div>
+      <div class="fact rv d1"><b>Nothing uploaded</b><span>Your documents, videos, recipes and reminders stay on your phone. No accounts, no sign-up.</span></div>
+      <div class="fact rv d2"><b>You stay in charge</b><span>Every app works on its own. VisaSched only opens an app when you made the rule – it never deletes or sends anything for you.</span></div>
+      <div class="fact rv d3"><b>Made in South Africa</b><span>Built by one developer and tested by real people on real phones, tablets and car radios.</span></div>
     </div>
   </div>
 </section>
+</main>
 
-<footer id="contact">
-  <div class="wrap">
-    <div><h4>Visagie Apps</h4><p>Simple, friendly Android apps by Philip Visagie, South Africa.</p></div>
-    <div><h4>Contact</h4><p><a href="mailto:philip.visadev@gmail.com">philip.visadev@gmail.com</a></p></div>
-    <div><h4>Privacy</h4><p id="privacy"></p></div>
-  </div>
-</footer>
+<footer id="contact"><div class="wrap"><div class="cols">
+  <div><h4>Visagie Apps</h4><p>Simple, powerful Android apps<br>by Philip Visagie, South Africa.</p></div>
+  <div><h4>Tutorials</h4><p><a href="visapdf/">VisaPdf</a></p><p><a href="visaplay/">VisaPlay</a></p><p><a href="visacook/">VisaCook</a></p><p><a href="visasched/">VisaSched</a></p></div>
+  <div><h4>Privacy</h4><p id="privacy"><a href="visasched/privacy.html">VisaSched privacy policy</a><br><a href="visaplay/privacy.html">VisaPlay privacy policy</a><br><a href="visacook/privacy.html">VisaCook privacy policy</a><br><a href="visapdf/privacy.html">VisaPdf privacy policy</a></p></div>
+  <div><h4>Contact</h4><p><a href="mailto:philip.visadev@gmail.com">philip.visadev@gmail.com</a></p></div>
+</div><p class="made">Made in South Africa · Google Play and the Google Play logo are trademarks of Google LLC.</p></div></footer>
 
 <script>
 /* ---- The app list lives in apps.json (the apps' "More Visa apps" screen reads the same file). Edit it there. ---- */
-
 const STORIES = {
   play:{ when:"Weekdays at <strong>16:00</strong>", act:"VisaSched starts your favourite station in <strong>VisaPlay</strong>.",
          say:"Play the radio at 4", note:"Radio needs VisaPlay Pro. Free: carry on your music or open a playlist." },
   cook:{ when:"Every day at <strong>17:00</strong>", act:"VisaSched opens <strong>tonight's dinner</strong> in VisaCook.",
-         say:"What's for dinner at 5", note:"The week's dinner plan is part of VisaCook Pro." },
+         say:"What's for dinner at 5", note:"The dinner plan is part of VisaCook Pro." },
   pdf: { when:"Weekdays at <strong>17:30</strong>", act:"VisaSched opens the <strong>VisaPdf camera</strong> for the day's paperwork.",
          say:"Make a PDF after work", note:"Free in both apps." }
 };
-
 const playUrl = p => "https://play.google.com/store/apps/details?id=" + p;
-const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3.5v17c0 .4.4.6.7.4L19 12.4c.3-.2.3-.6 0-.8L4.7 3.1c-.3-.2-.7 0-.7.4z"/></svg>';
+const playSvg = document.querySelector(".btn-play svg").outerHTML;
 const slug = a => a.name.toLowerCase();
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -297,18 +342,19 @@ fetch("apps.json", { cache: "no-cache" }).then(r => r.json()).then(data => {
       <header><img src="${esc(a.icon)}" alt=""><div><h3>${esc(a.name)}</h3><div class="line">${esc(a.tagline)}</div></div></header>
       <ul>${(a.points || []).map(p => `<li>${esc(p)}</li>`).join("")}</ul>
       <div class="links">
-        ${a.live ? `<a class="get" href="${playUrl(a.id)}">${playIcon}Get it on Google Play</a>`
-                 : `<span class="get soon">Coming soon to Google Play</span>`}
+        ${a.live ? `<a class="btn btn-play" href="${playUrl(a.id)}">${playSvg}<span><small>Get it on</small><b>Google Play</b></span></a>`
+                 : `<span class="soon">Coming soon to Google Play</span>`}
+        <a class="small" href="${slug(a)}/">Tutorial</a>
         ${a.privacy ? `<a class="small" href="${slug(a)}/privacy.html">Privacy</a>` : ""}
       </div>
     </article>`).join("");
-  document.getElementById("privacy").innerHTML = apps.filter(a => a.privacy)
-    .map(a => `<a href="${slug(a)}/privacy.html">${esc(a.name)} privacy policy</a>`).join("<br>") || "Coming soon";
+  const priv = apps.filter(a => a.privacy).map(a => `<a href="${slug(a)}/privacy.html">${esc(a.name)} privacy policy</a>`).join("<br>");
+  if (priv) document.getElementById("privacy").innerHTML = priv;
 }).catch(() => {
   document.getElementById("cards").innerHTML = '<p>Our apps are on <a href="https://play.google.com/store/apps/dev?id=5667284812696899656">Google Play</a>.</p>';
 });
 
-/* ---- the family diagram: cycles through the 3 examples until the visitor picks one ---- */
+/* ---- the family diagram + story card: cycles through the 3 examples until the visitor picks one ---- */
 const order = ["play","cook","pdf"];
 let cur = 0, timer = null;
 function show(k){
@@ -323,11 +369,11 @@ function show(k){
 }
 function pick(k){ clearInterval(timer); timer = null; show(k); }
 document.querySelectorAll("#family .sat, #story .pick button").forEach(el => el.addEventListener("click", () => pick(el.dataset.k)));
-
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
 show("play");
 if (still) document.querySelector("#family svg.lines").pauseAnimations();
 else timer = setInterval(() => show(order[(cur + 1) % order.length]), 4500);
 </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

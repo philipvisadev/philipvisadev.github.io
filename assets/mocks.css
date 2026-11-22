@@ -1,0 +1,129 @@
+/* Animated feature screens drawn in CSS (VisaPdf showcase + home spotlight).
+   The plain (un-animated) style of every part is the finished picture, so reduced-motion shows a complete screen. */
+.mock{position:absolute;inset:0;overflow:hidden;font-family:var(--body);color:var(--ink);
+  background:radial-gradient(90% 70% at 50% 0%,#f3b45a,#c8641e 70%,#8a3f10)}
+.mock .bar-top{position:absolute;inset:0 0 auto;height:34px;background:linear-gradient(180deg,var(--emerald),var(--emerald-deep));
+  border-radius:0 0 50% 50%/0 0 14px 14px;color:var(--cream);font-weight:800;font-size:12px;display:flex;align-items:center;padding:0 12px;gap:6px;z-index:3}
+.mock .bar-top em{font-style:normal;color:var(--gold)}
+.mock .page{position:absolute;background:#fffdf8;border-radius:4px;box-shadow:0 10px 26px rgba(60,25,5,.35)}
+.mock .ln{display:block;height:5px;border-radius:3px;background:#e2d6c4;margin:7px 0}
+.mock .badge{position:absolute;z-index:5;background:var(--emerald);color:var(--cream);font-weight:800;font-size:12px;border-radius:999px;padding:5px 11px;
+  box-shadow:0 6px 16px rgba(0,0,0,.3);white-space:nowrap}
+.mock .badge::before{content:"✓ ";color:var(--gold)}
+
+/* ---- ID card: front + back fly onto one A4 page ---- */
+.m-id .page{left:50%;top:44px;width:132px;height:187px;margin-left:-66px;padding:14px 12px}
+.m-id .card{position:absolute;left:14px;width:104px;height:66px;border-radius:7px;overflow:hidden;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.m-id .front{top:18px;background:linear-gradient(135deg,var(--emerald),var(--emerald-deep));animation:fly1 6s cubic-bezier(.3,.8,.3,1) infinite}
+.m-id .back{top:96px;background:linear-gradient(135deg,#f6e3c3,#e6c99a);animation:fly2 6s cubic-bezier(.3,.8,.3,1) infinite}
+.m-id .front i{position:absolute;left:8px;top:12px;width:26px;height:32px;border-radius:5px;background:#f6e3c3}
+.m-id .front s{position:absolute;left:40px;height:4px;border-radius:2px;background:rgba(255,226,138,.85)}
+.m-id .front s:nth-of-type(1){top:14px;width:50px}.m-id .front s:nth-of-type(2){top:24px;width:38px}.m-id .front s:nth-of-type(3){top:34px;width:44px}
+.m-id .front b{position:absolute;left:8px;bottom:7px;font-size:7px;color:var(--gold);letter-spacing:.1em}
+.m-id .back i{position:absolute;inset:auto 8px 9px;height:16px;background:repeating-linear-gradient(90deg,#2b1a0c 0 2px,transparent 2px 4px,#2b1a0c 4px 5px,transparent 5px 8px)}
+.m-id .back s{position:absolute;left:8px;top:0;right:0;height:12px;margin-top:10px;background:#2b1a0c;opacity:.75}
+.m-id .beam{position:absolute;left:50%;top:44px;width:150px;margin-left:-75px;height:3px;background:var(--gold);box-shadow:0 0 14px 4px rgba(255,206,69,.8);opacity:0;animation:beam 6s linear infinite}
+.m-id .badge{right:12px;bottom:14px;animation:pop 6s infinite}
+@keyframes fly1{0%{transform:translate(-170px,-60px) rotate(-28deg);opacity:0}8%{opacity:1}28%,88%{transform:none;opacity:1}100%{opacity:0}}
+@keyframes fly2{0%,14%{transform:translate(170px,60px) rotate(32deg);opacity:0}22%{opacity:1}42%,88%{transform:none;opacity:1}100%{opacity:0}}
+@keyframes beam{0%,45%{opacity:0;transform:none}50%{opacity:1}68%{opacity:1;transform:translateY(186px)}72%,100%{opacity:0;transform:translateY(186px)}}
+@keyframes pop{0%,70%{transform:scale(0);opacity:0}76%{transform:scale(1.15);opacity:1}80%,92%{transform:scale(1);opacity:1}100%{opacity:0}}
+
+/* ---- QR / barcode: scan, then the link becomes tappable ---- */
+.m-qr .code{position:absolute;left:50%;top:46px;width:128px;height:128px;margin-left:-64px;background:#fff;border-radius:12px;padding:10px;box-shadow:0 10px 26px rgba(60,25,5,.35)}
+.m-qr .code svg{width:100%;height:100%;display:block}
+.m-qr .corner{position:absolute;width:22px;height:22px;border:4px solid var(--gold);z-index:2}
+.m-qr .c1{left:-8px;top:-8px;border-right:0;border-bottom:0;border-radius:10px 0 0 0}.m-qr .c2{right:-8px;top:-8px;border-left:0;border-bottom:0;border-radius:0 10px 0 0}
+.m-qr .c3{left:-8px;bottom:-8px;border-right:0;border-top:0;border-radius:0 0 0 10px}.m-qr .c4{right:-8px;bottom:-8px;border-left:0;border-top:0;border-radius:0 0 10px 0}
+.m-qr .laser{position:absolute;left:4px;right:4px;top:8px;height:2px;background:#ff4d2e;box-shadow:0 0 10px 3px rgba(255,77,46,.7);opacity:0;animation:laser 5s ease-in-out infinite}
+.m-qr .link{position:absolute;left:50%;bottom:16px;translate:-50% 0;background:#fffdf8;border-radius:14px;padding:8px 12px;font-size:12px;font-weight:800;white-space:nowrap;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);animation:linkin 5s infinite}
+.m-qr .link u{color:#1a63d8}
+.m-qr .link small{display:block;font-size:10px;color:var(--ink-muted);font-weight:700}
+.m-qr .tap{position:absolute;right:26px;bottom:20px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.75);box-shadow:0 0 0 0 rgba(255,255,255,.6);opacity:0;animation:tap 5s infinite}
+@keyframes laser{0%,5%{opacity:0;transform:none}10%{opacity:1}45%{opacity:1;transform:translateY(118px)}50%,100%{opacity:0;transform:translateY(118px)}}
+@keyframes linkin{0%,48%{transform:translateY(60px);opacity:0}56%,92%{transform:none;opacity:1}100%{opacity:0}}
+@keyframes tap{0%,66%{opacity:0;transform:scale(.4)}72%{opacity:1;transform:scale(1)}80%{box-shadow:0 0 0 16px rgba(255,255,255,0)}84%,100%{opacity:0}}
+
+/* ---- Time stamp camera: 6 looks ---- */
+.m-stamp{background:linear-gradient(180deg,#ffb35c 0%,#ffd38a 38%,#f6e3c3 52%,#5c8a3c 53%,#2f5e24 100%)}
+.m-stamp .sun{position:absolute;left:60%;top:56px;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle,#fff6d6,#FFCE45 60%,rgba(255,206,69,0) 72%)}
+.m-stamp .hill{position:absolute;bottom:0;width:160%;left:-30%;height:46%;border-radius:50% 50% 0 0;background:#3e7a2c}
+.m-stamp .hill.b{left:20%;height:36%;background:#2a5a1f}
+.m-stamp .tree{position:absolute;bottom:34%;left:18%;width:0;height:0;border:16px solid transparent;border-bottom:44px solid #1e4416;border-top:0}
+.m-stamp .shutter{position:absolute;inset:0;background:#fff;opacity:0;animation:flash 3.4s infinite}
+.m-stamp .stamp{position:absolute;right:14px;bottom:16px;font-weight:800;font-size:13px;line-height:1.2;transition:all .4s;animation:drag 6.8s ease-in-out infinite}
+.m-stamp .stamp small{display:block;font-size:9px;opacity:.85}
+.m-stamp .name{position:absolute;left:10px;top:10px;font-size:11px;font-weight:800;background:rgba(36,23,12,.75);color:var(--gold-bright);border-radius:999px;padding:4px 10px}
+.st-orange .stamp{color:#ff8a1e;text-shadow:0 1px 2px rgba(0,0,0,.6);font-family:ui-monospace,Consolas,monospace}
+.st-box .stamp{background:#111;color:#fff;padding:6px 9px;border-radius:4px}
+.st-gold .stamp{background:linear-gradient(180deg,var(--gold-bright),var(--gold));color:var(--espresso);padding:7px 11px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.st-receipt .stamp{background:#fffdf8;color:#333;padding:7px 10px;font-family:ui-monospace,Consolas,monospace;border-top:2px dashed #999;border-bottom:2px dashed #999}
+.st-line .stamp{color:#fff;font-size:10px;text-shadow:0 1px 2px #000;left:10px;right:10px;bottom:10px;text-align:center;border-top:1px solid rgba(255,255,255,.6);padding-top:3px}
+.st-clock .stamp{color:#fff;font-size:30px;font-family:var(--head);text-shadow:0 2px 8px rgba(0,0,0,.6);text-align:right}
+@keyframes flash{0%,90%{opacity:0}94%{opacity:.9}100%{opacity:0}}
+@keyframes drag{0%,40%{translate:0 0}55%,85%{translate:-12px -26px}100%{translate:0 0}}
+
+/* ---- Scan a list: codes count up ---- */
+.m-list{background:linear-gradient(180deg,#f6e3c3,#efd4a8)}
+.m-list .rows{position:absolute;left:12px;right:12px;top:44px;display:grid;gap:6px}
+.m-list .row{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;background:#fffdf8;border-radius:10px;padding:6px 10px;font-size:12px;font-weight:800;
+  box-shadow:0 2px 0 rgba(169,78,20,.15)}
+.m-list .row i{height:18px;background:repeating-linear-gradient(90deg,#2b1a0c 0 2px,transparent 2px 3px,#2b1a0c 3px 4px,transparent 4px 6px)}
+.m-list .row small{display:block;font-size:9px;color:var(--ink-muted);font-weight:700}
+.m-list .row b{min-width:30px;text-align:center;background:var(--emerald);color:var(--gold);border-radius:8px;padding:3px 6px}
+.m-list .row.hit{animation:hit .6s}
+.m-list .total{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;background:var(--espresso);color:var(--cream);
+  border-radius:12px;padding:8px 12px;font-weight:800;font-size:13px}
+.m-list .total b{color:var(--gold);font-size:17px}
+.m-list .total span{font-size:10px;background:#217346;color:#fff;border-radius:6px;padding:3px 7px}
+@keyframes hit{30%{background:var(--gold-bright);transform:scale(1.04)}}
+
+/* ---- Word / Excel / PowerPoint ---- */
+.m-office .page{left:22px;top:60px;width:84px;height:116px;padding:12px 10px}
+.m-office .page::after{content:"PDF";position:absolute;left:8px;bottom:8px;background:#c8321e;color:#fff;font-weight:800;font-size:10px;border-radius:4px;padding:2px 6px}
+.m-office .flow{position:absolute;left:112px;top:116px;width:46px;height:4px;
+  background:radial-gradient(circle,var(--gold) 2px,transparent 2.6px) 0 0/10px 4px repeat-x;animation:dots .6s linear infinite}
+.m-office .outs{position:absolute;right:14px;top:46px;display:grid;gap:9px}
+.m-office .o{display:flex;align-items:center;gap:8px;background:#fffdf8;border-radius:12px;padding:6px 12px 6px 6px;font-weight:800;font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.m-office .o i{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:#fff;font-style:normal;font-size:15px;font-weight:900}
+.m-office .w i{background:#2b579a}.m-office .x i{background:#217346}.m-office .p i{background:#d24726}
+.m-office .w{animation:outin 4.8s infinite}.m-office .x{animation:outin 4.8s .5s infinite}.m-office .p{animation:outin 4.8s 1s infinite}
+@keyframes dots{to{background-position:10px 0}}
+@keyframes outin{0%,8%{transform:translateX(50px) scale(.6);opacity:0}20%,85%{transform:none;opacity:1}100%{opacity:0}}
+
+/* ---- PDF studio: sign, highlight, stamp ---- */
+.m-sign .page{left:18px;right:18px;top:44px;bottom:50px;padding:14px 14px}
+.m-sign .hl{position:absolute;left:12px;top:30px;height:9px;width:0;background:rgba(255,206,69,.7);border-radius:2px;animation:hl 6s infinite}
+.m-sign svg.sig{position:absolute;left:18px;bottom:16px;width:120px;height:44px;overflow:visible}
+.m-sign svg.sig path{fill:none;stroke:#1a3a8c;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:0;animation:sig 6s infinite}
+.m-sign .paid{position:absolute;right:14px;bottom:20px;border:3px solid #c8321e;color:#c8321e;font-weight:900;font-size:17px;letter-spacing:.08em;border-radius:6px;padding:1px 8px;rotate:-16deg;animation:slam 6s infinite}
+.m-sign .tools{position:absolute;left:12px;right:12px;bottom:8px;height:34px;display:flex;justify-content:space-around;align-items:center;background:var(--espresso);border-radius:12px}
+.m-sign .tools i{font-style:normal;font-size:15px;width:28px;height:26px;display:grid;place-items:center;border-radius:8px;color:var(--sand)}
+.m-sign .tools i:nth-child(1){animation:tool 6s infinite}.m-sign .tools i:nth-child(2){animation:tool 6s -4s infinite}.m-sign .tools i:nth-child(3){animation:tool 6s -2s infinite}
+@keyframes hl{0%,8%{width:0}22%,100%{width:62%}}
+@keyframes sig{0%,25%{stroke-dashoffset:400}60%,100%{stroke-dashoffset:0}}
+@keyframes slam{0%,62%{transform:scale(2.4);opacity:0}70%{transform:scale(.92);opacity:1}74%,100%{transform:none;opacity:1}}
+@keyframes tool{0%,30%{background:var(--gold);color:var(--espresso)}34%,100%{background:transparent;color:var(--sand)}}
+
+/* ---- Read aloud: lines light up one by one ---- */
+.m-read .page{left:18px;right:18px;top:44px;bottom:58px;padding:14px}
+.m-read .ln{transition:background .3s}
+.m-read .ln:nth-child(1){animation:say 4s infinite}.m-read .ln:nth-child(2){animation:say 4s .5s infinite}.m-read .ln:nth-child(3){animation:say 4s 1s infinite}
+.m-read .ln:nth-child(4){animation:say 4s 1.5s infinite}.m-read .ln:nth-child(5){animation:say 4s 2s infinite}
+.m-read .player{position:absolute;left:12px;right:12px;bottom:10px;height:40px;background:var(--emerald-deep);border-radius:14px;display:flex;align-items:center;justify-content:center;gap:4px}
+.m-read .player i{width:4px;border-radius:2px;background:var(--gold);height:10px;animation:eq .9s ease-in-out infinite}
+.m-read .player i:nth-child(2){animation-delay:-.2s}.m-read .player i:nth-child(3){animation-delay:-.4s}.m-read .player i:nth-child(4){animation-delay:-.6s}.m-read .player i:nth-child(5){animation-delay:-.8s}
+@keyframes say{0%,10%{background:#e2d6c4}12%,22%{background:var(--gold);box-shadow:0 0 0 3px rgba(255,206,69,.35)}26%,100%{background:#e2d6c4}}
+@keyframes eq{50%{height:26px}}
+
+/* ---- Lock with a password ---- */
+.m-lock .page{left:50%;top:50px;width:120px;height:160px;margin-left:-60px;padding:16px 12px}
+.m-lock .pad{position:absolute;left:50%;top:92px;margin-left:-28px;width:56px;height:46px;border-radius:10px;background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));box-shadow:0 8px 18px rgba(0,0,0,.35);z-index:2}
+.m-lock .pad::before{content:"";position:absolute;left:10px;top:-26px;width:28px;height:30px;border:6px solid #b07a12;border-bottom:0;border-radius:18px 18px 0 0;animation:shackle 4s infinite}
+.m-lock .pad::after{content:"";position:absolute;left:50%;top:14px;width:8px;height:14px;margin-left:-4px;border-radius:4px;background:var(--espresso)}
+.m-lock .dots{position:absolute;left:50%;bottom:14px;translate:-50% 0;display:flex;gap:6px;background:#fffdf8;border-radius:10px;padding:8px 12px;box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.m-lock .dots i{width:9px;height:9px;border-radius:50%;background:var(--espresso);animation:pw 4s infinite}
+.m-lock .dots i:nth-child(2){animation-delay:.15s}.m-lock .dots i:nth-child(3){animation-delay:.3s}.m-lock .dots i:nth-child(4){animation-delay:.45s}.m-lock .dots i:nth-child(5){animation-delay:.6s}
+@keyframes shackle{0%,35%{transform:translateY(-12px)}50%,100%{transform:none}}
+@keyframes pw{0%,5%{opacity:0;transform:scale(0)}12%,100%{opacity:1;transform:none}}
