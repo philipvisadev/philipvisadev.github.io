@@ -16,7 +16,7 @@
       "category": "Everyday",
       "icon": "img/visasched.png",
       "hub": true,
-      "live": true,
+      "live": false,
       "privacy": true,
       "isNew": true,
       "order": 1
@@ -49,7 +49,7 @@
       ],
       "category": "Food & drink",
       "icon": "img/visacook.png",
-      "live": true,
+      "live": false,
       "privacy": true,
       "order": 3
     },
