@@ -11,7 +11,7 @@ const NAV = [
   { slug: "visaplay", name: "VisaPlay", line: "Plays everything + world radio" },
   { slug: "visacook", name: "VisaCook", line: "Recipes, cocktails, groceries" },
   { slug: "visasched", name: "VisaSched", line: "Your phone on autopilot" },
-  { slug: "visakeep", name: "VisaKeep", line: "Dates, lists & car" },
+  { slug: "visakeep", name: "VisaKeep", line: "Your home admin, sorted" },
   { slug: "visarelax", name: "VisaRelax", line: "22 family games" },
 ];
 
