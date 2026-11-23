@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visagie Apps for Business – Pro for your whole team</title>
+<meta name="description" content="Buy VisaPdf, VisaPlay, VisaCook or VisaSched Pro for your whole team in one go. Pick the number of people, pay once, get the keys by email.">
+<meta property="og:title" content="Visagie Apps for Business – Pro for your whole team">
+<meta property="og:description" content="Pick the app, pick how many people, pay once. Keys by email, no subscription.">
+<meta property="og:image" content="https://philipvisadev.github.io/img/visapdf.png">
+<meta name="theme-color" content="#24170C">
+<link rel="icon" href="../img/visapdf.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.biz-hero{padding:56px 0 64px}
+.biz-hero h1{font-size:clamp(36px,6.4vw,72px)}
+.buy{display:grid;gap:22px;align-items:start}
+@media (min-width:960px){.buy{grid-template-columns:1.15fr .85fr}}
+.panel{background:#fff;color:var(--ink);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,3vw,32px)}
+.panel h3{font-size:22px;color:var(--emerald-deep);margin-bottom:14px}
+.step{font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--burnt);margin:22px 0 10px}
+.step:first-child{margin-top:0}
+.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.app{position:relative;display:flex;align-items:center;gap:10px;border:2px solid var(--sand);border-radius:16px;padding:10px 12px;cursor:pointer;background:var(--cream);font-weight:800;min-height:62px}
+.app img{width:38px;height:38px;border-radius:10px;flex:none}
+.app small{display:block;font-weight:700;color:var(--ink-muted);font-size:12px;line-height:1.2}
+.app input{position:absolute;opacity:0;pointer-events:none}
+.app:has(input:checked){border-color:var(--gold-deep);background:#fff6dc;box-shadow:0 0 0 3px rgba(255,206,69,.45)}
+.app.pass{grid-column:1/-1;background:linear-gradient(100deg,#fff6dc,var(--cream))}
+.app.pass .pi{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--emerald-deep);color:var(--gold);font-size:20px;flex:none}
+.qty{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.qty button{width:48px;height:48px;border-radius:14px;border:2px solid var(--sand);background:var(--cream);font:inherit;font-size:24px;font-weight:800;cursor:pointer;color:var(--emerald-deep)}
+.qty input[type=number]{width:110px;height:48px;border-radius:14px;border:2px solid var(--sand);font:inherit;font-size:22px;font-weight:800;text-align:center;color:var(--ink)}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.quick button{border:1px solid var(--sand);background:#fff;border-radius:999px;padding:6px 14px;font:inherit;font-weight:800;cursor:pointer;color:var(--ink-muted)}
+.quick button.on{background:var(--gold);border-color:var(--gold-deep);color:var(--espresso)}
+.fields{display:grid;gap:10px}
+@media (min-width:560px){.fields{grid-template-columns:1fr 1fr}}
+.fields label{display:flex;flex-direction:column;gap:4px;font-weight:800;font-size:14px}
+.fields label.full{grid-column:1/-1}
+.fields input{height:46px;border-radius:12px;border:2px solid var(--sand);padding:0 12px;font:inherit;font-size:16px}
+.fields input:focus{outline:none;border-color:var(--gold-deep)}
+.fields em{font-style:normal;font-weight:700;color:var(--ink-muted)}
+.total{position:sticky;top:76px}
+.total .line{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-weight:700}
+.total .line span:last-child{text-align:right}
+.total .big{font-family:var(--head);font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--emerald-deep);line-height:1;margin:14px 0 4px}
+.total .each{color:var(--ink-muted);font-weight:700}
+.total .save{display:inline-block;margin-top:8px;background:var(--emerald);color:#fff;font-weight:800;font-size:13px;padding:4px 10px;border-radius:999px}
+.total .btn{width:100%;justify-content:center;font-size:19px;padding:16px 20px;margin-top:18px;border:0;cursor:pointer}
+.total .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.total .alt{margin-top:12px;text-align:center;font-weight:700;font-size:14px}
+.total .err{color:var(--deep-orange);font-weight:800;font-size:14px;margin-top:10px;min-height:1em}
+.tiers{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.tiers td{padding:6px 0;border-top:1px solid var(--sand)}.tiers td:last-child{text-align:right;font-weight:800}
+.tiers tr.on td{color:var(--emerald-deep);font-weight:800}
+.testmode{background:#fde7c8;border:2px dashed var(--burnt);color:var(--deep-orange);font-weight:800;border-radius:14px;padding:10px 14px;margin-bottom:14px}
+.how{display:grid;gap:18px;counter-reset:s}
+@media (min-width:860px){.how{grid-template-columns:repeat(4,1fr)}}
+.how div{background:var(--cream);border-radius:20px;padding:22px;counter-increment:s}
+.how div::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--espresso);font-weight:900;font-size:20px;margin-bottom:12px}
+.how b{display:block;font-size:18px;margin-bottom:6px;color:var(--emerald-deep)}
+.faq details{background:#fff;border-radius:16px;padding:14px 18px;margin-bottom:10px}
+.faq summary{font-weight:800;cursor:pointer}
+.faq p{margin-top:8px;color:var(--ink-muted)}
+.paid{background:var(--emerald);color:#fff;border-radius:var(--r);padding:22px 26px;font-weight:700;margin-bottom:22px;display:none}
+.paid b{font-size:22px;display:block;font-family:var(--head)}
+</style>
+</head>
+<body data-root="../">
+<header class="bar"><div class="wrap">
+  <a class="brand" href="../"><span class="dots"><i></i><i></i><i></i><i></i></span><span class="t">Visagie Apps</span></a>
+  <nav aria-label="Apps"><a href="../visapdf/"><img src="../img/visapdf.png" alt=""><b>VisaPdf</b></a><a href="../visaplay/"><img src="../img/visaplay.png" alt=""><b>VisaPlay</b></a><a href="../visacook/"><img src="../img/visacook.png" alt=""><b>VisaCook</b></a><a href="../visasched/"><img src="../img/visasched.png" alt=""><b>VisaSched</b></a><a href="./" aria-current="page"><span>Business</span></a></nav>
+</div></header>
+<main>
+<section class="hero biz-hero"><div class="glow"></div><div class="ledgrid"></div>
+<div class="wrap">
+  <span class="kicker"><span class="live"></span>For teams &amp; business</span>
+  <h1>Pro for your <span class="shine">whole team.</span><br>Done in one payment.</h1>
+  <p class="lede">Pick the app, pick how many people, pay once. Every person gets their own key by email – no ads, every Pro feature, no subscription.</p>
+
+  <div class="buy" style="margin-top:36px">
+    <form class="panel" id="order" novalidate>
+      <div class="testmode" id="testmode" hidden>TEST MODE – PayFast sandbox, no real money. (Fill in MERCHANT_ID on this page to go live.)</div>
+      <div class="step">1 · Which app?</div>
+      <div class="apps" id="apps"></div>
+
+      <div class="step">2 · How many people?</div>
+      <div class="qty">
+        <button type="button" id="minus" aria-label="Fewer">−</button>
+        <input type="number" id="seats" min="5" max="5000" value="25" inputmode="numeric" aria-label="Number of people">
+        <button type="button" id="plus" aria-label="More">+</button>
+      </div>
+      <div class="quick" id="quick"></div>
+
+      <div class="step">3 · Where do we send the keys?</div>
+      <div class="fields">
+        <label>Company name<input id="company" autocomplete="organization" required maxlength="100"></label>
+        <label>Your name<input id="person" autocomplete="name" required maxlength="100"></label>
+        <label class="full">Email for the keys and invoice<input id="email" type="email" autocomplete="email" required maxlength="100"></label>
+        <label class="full">VAT / company reg number <em>(optional, for the invoice)</em><input id="vat" maxlength="60"></label>
+      </div>
+    </form>
+
+    <aside class="panel total" aria-live="polite">
+      <h3 id="sumTitle">Your order</h3>
+      <div class="line"><span id="sumWhat">–</span><span id="sumEach">–</span></div>
+      <div class="big" id="sumTotal">R0</div>
+      <div class="each" id="sumNote">once-off, keys by email</div>
+      <span class="save" id="sumSave" hidden></span>
+      <button class="btn btn-gold" id="pay" type="button">Pay now with PayFast →</button>
+      <div class="err" id="err"></div>
+      <p class="alt">Card, Instant EFT, SnapScan &amp; more via PayFast.<br>Need a quote or a normal invoice to pay by EFT? <a id="quote" href="mailto:philip.visadev@gmail.com">Email us</a>.</p>
+      <table class="tiers" id="tiers"></table>
+    </aside>
+  </div>
+</div></section>
+
+<section class="light" style="padding:64px 0"><div class="wrap">
+  <div id="paid" class="paid"><b>Thank you – payment received!</b>Your keys are on their way to your inbox, normally within a few hours on working days. Check the spam folder too.</div>
+  <div class="sec-head"><span class="kicker">How it works</span><h2>Four steps. No IT department needed.</h2></div>
+  <div class="how">
+    <div><b>Pay once</b>Pick the app and the number of people above and pay with PayFast.</div>
+    <div><b>Get the keys</b>We email one key per person, plus a short how-to you can forward.</div>
+    <div><b>Install free</b>Each person installs the app free from Google Play.</div>
+    <div><b>Type the key</b>Settings → “Have a code? Redeem it”. Pro unlocks right away.</div>
+  </div>
+</div></section>
+
+<section class="sandbg" style="padding:64px 0"><div class="wrap faq">
+  <div class="sec-head"><span class="kicker">Good to know</span><h2>Questions</h2></div>
+  <details><summary>Is it really once-off?</summary><p>Yes. Pro stays unlocked for as long as the person uses the app. No subscription, no renewal.</p></details>
+  <details><summary>What is the Visa Pro Pass?</summary><p>One key that unlocks Pro in every Visa app – VisaPdf, VisaPlay, VisaCook and VisaSched. The person types the same key in each app.</p></details>
+  <details><summary>Can we move a key to a new phone?</summary><p>Yes – type the same key on the new phone. Keys are meant for one person each; please don't share them around.</p></details>
+  <details><summary>Does the key or app send our company data anywhere?</summary><p>No. The app only checks the key against our list, on the phone itself – the key isn't sent anywhere. Documents and files stay on the phone, just like the normal app. See each app's privacy policy.</p></details>
+  <details><summary>We need more than 5000, a quote, or a purchase order.</summary><p>No problem – <a href="mailto:philip.visadev@gmail.com?subject=Business%20quote">email us</a> with the app and number of people and we'll send a quote and invoice you can pay by EFT.</p></details>
+  <details><summary>Just one person?</summary><p>Buy Pro in the app itself (Settings → Upgrade to Pro) – that's quicker. This page is for 5 people or more.</p></details>
+</div></section>
+</main>
+<footer><div class="wrap"><div class="cols">
+  <div><h4>Visagie Apps</h4><p>Simple, powerful Android apps<br>by Philip Visagie, South Africa.</p></div>
+  <div><h4>The family</h4><p><a href="../visapdf/">VisaPdf</a></p><p><a href="../visaplay/">VisaPlay</a></p><p><a href="../visacook/">VisaCook</a></p><p><a href="../visasched/">VisaSched</a></p></div>
+  <div><h4>Questions?</h4><p><a href="mailto:philip.visadev@gmail.com">philip.visadev@gmail.com</a></p><p><a href="../">Home</a></p></div>
+</div><p class="made">Made in South Africa · Payments by PayFast · Google Play is a trademark of Google LLC.</p></div></footer>
+
+<script>
+/* ======================= EDIT HERE ======================= */
+// From PayFast: Settings → Integration (Merchant ID + Merchant Key). Empty = sandbox TEST MODE (no real money).
+const MERCHANT_ID  = "";
+const MERCHANT_KEY = "";
+// Price per person in rand, by number of people (from = lowest count for that price).
+const PRICES = {
+  app:  [{from: 5, each: 45}, {from: 50, each: 39}, {from: 200, each: 29}],   // one app's Pro
+  pass: [{from: 5, each: 129}, {from: 50, each: 109}, {from: 200, each: 89}],  // Visa Pro Pass (all apps)
+};
+const SOLO_PRICE = {app: 49.99, pass: 199.96}; // what one person pays on Google Play (for the "save" badge)
+// Only list apps whose LIVE Play version has "Have a code?" (RedeemCode.kt). key = name in keys.json.
+const APPS = [
+  {key: "visapdf",   name: "VisaPdf",   note: "PDF office",       img: "../img/visapdf.png"},
+  {key: "visaplay",  name: "VisaPlay",  note: "Video & radio",    img: "../img/visaplay.png"},
+  {key: "visacook",  name: "VisaCook",  note: "Recipes",          img: "../img/visacook.png"},
+  {key: "visasched", name: "VisaSched", note: "Smart reminders",  img: "../img/visasched.png"},
+];
+const MIN = 5, MAX = 5000;
+/* ========================================================= */
+
+const live = MERCHANT_ID !== "" && MERCHANT_KEY !== "";
+const PAYFAST = live ? "https://www.payfast.co.za/eng/process" : "https://sandbox.payfast.co.za/eng/process";
+const MID = live ? MERCHANT_ID : "10000100", MKEY = live ? MERCHANT_KEY : "46f0cd694581a"; // PayFast's public sandbox test merchant
+if (!live) document.getElementById("testmode").hidden = false;
+if (new URLSearchParams(location.search).get("paid") === "1") { const p = document.getElementById("paid"); p.style.display = "block"; setTimeout(() => p.scrollIntoView({behavior: "smooth"}), 300); }
+
+const $ = id => document.getElementById(id);
+const rand = n => "R" + n.toLocaleString("en-ZA", {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2});
+let choice = "visapdf";
+
+$("apps").innerHTML = APPS.map(a =>
+  `<label class="app"><input type="radio" name="app" value="${a.key}"${a.key === choice ? " checked" : ""}><img src="${a.img}" alt=""><span>${a.name}<small>${a.note}</small></span></label>`
+).join("") + `<label class="app pass"><input type="radio" name="app" value="all"><span class="pi">★</span><span>Visa Pro Pass<small>Pro in every Visa app – one key per person</small></span></label>`;
+$("apps").addEventListener("change", e => { choice = e.target.value; update(); });
+
+[10, 25, 50, 100, 250].forEach(n => { const b = document.createElement("button"); b.type = "button"; b.textContent = n; b.onclick = () => { $("seats").value = n; update(); }; $("quick").append(b); });
+$("minus").onclick = () => { $("seats").value = Math.max(MIN, seats() - 5); update(); };
+$("plus").onclick = () => { $("seats").value = Math.min(MAX, seats() + 5); update(); };
+$("seats").addEventListener("input", update);
+$("seats").addEventListener("blur", () => { $("seats").value = seats(); update(); });
+
+function seats() { const n = parseInt($("seats").value, 10); return isNaN(n) ? MIN : Math.min(MAX, Math.max(MIN, n)); }
+function kind() { return choice === "all" ? "pass" : "app"; }
+function priceEach(n) { return PRICES[kind()].filter(t => n >= t.from).pop().each; }
+function title() { return choice === "all" ? "Visa Pro Pass" : APPS.find(a => a.key === choice).name + " Pro"; }
+
+function update() {
+  const n = seats(), each = priceEach(n), total = n * each;
+  $("sumWhat").textContent = `${n} × ${title()}`;
+  $("sumEach").textContent = `${rand(each)} each`;
+  $("sumTotal").textContent = rand(total);
+  const solo = SOLO_PRICE[kind()] * n, save = Math.round(solo - total);
+  $("sumSave").hidden = save <= 0; $("sumSave").textContent = `You save ${rand(save)} vs buying one by one`;
+  [...$("quick").children].forEach(b => b.classList.toggle("on", +b.textContent === n));
+  const tiers = PRICES[kind()];
+  $("tiers").innerHTML = tiers.map((t, i) => {
+    const to = tiers[i + 1] ? `–${tiers[i + 1].from - 1}` : "+";
+    return `<tr class="${each === t.each ? "on" : ""}"><td>${t.from}${to} people</td><td>${rand(t.each)} each</td></tr>`;
+  }).join("");
+  $("quote").href = "mailto:philip.visadev@gmail.com?subject=" + encodeURIComponent(`Quote: ${n} x ${title()}`) +
+    "&body=" + encodeURIComponent(`Hi Philip,\n\nPlease send a quote / invoice for ${n} x ${title()} (${rand(total)}).\n\nCompany:\nVAT / reg number:\nName:\n`);
+  $("err").textContent = "";
+}
+
+$("pay").onclick = () => {
+  const company = $("company").value.trim(), person = $("person").value.trim(), email = $("email").value.trim(), vat = $("vat").value.trim();
+  if (!company || !person) { $("err").textContent = "Please fill in the company and your name."; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { $("err").textContent = "Please check the email address – the keys go there."; return; }
+  const n = seats(), each = priceEach(n), total = (n * each).toFixed(2);
+  const [first, ...rest] = person.split(/\s+/);
+  const base = location.href.split(/[?#]/)[0];
+  const fields = {
+    merchant_id: MID, merchant_key: MKEY,
+    return_url: base + "?paid=1", cancel_url: base,
+    name_first: first.slice(0, 100), name_last: rest.join(" ").slice(0, 100), email_address: email,
+    amount: total,
+    item_name: `${n} x ${title()} keys`.slice(0, 100),
+    item_description: `${company}${vat ? " | VAT/reg " + vat : ""}`.slice(0, 255),
+    custom_str1: choice, custom_int1: n, custom_str2: company.slice(0, 255), custom_str3: vat.slice(0, 255),
+  };
+  const f = document.createElement("form"); f.method = "post"; f.action = PAYFAST;
+  for (const [k, v] of Object.entries(fields)) { if (v === "") continue; const i = document.createElement("input"); i.type = "hidden"; i.name = k; i.value = v; f.append(i); }
+  document.body.append(f); $("pay").disabled = true; $("pay").textContent = "Opening PayFast…"; f.submit();
+};
+update();
+</script>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

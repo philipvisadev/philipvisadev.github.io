@@ -1,0 +1,7 @@
+{
+  "_help": "Business / gift key fingerprints, read by the apps' 'Have a code?' (RedeemCode.kt). Made by make-keys.sh – don't edit by hand. Only sha256 fingerprints are here, never the keys. Value = app the key unlocks, or all.",
+  "version": 1,
+  "keys": {
+    "_end": ""
+  }
+}
