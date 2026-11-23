@@ -92,7 +92,6 @@ module.exports = {
   },
   pitch: {
     title: "Put your whole day on autopilot.",
-    price: "R49.99", once: "once-off · about $2.99",
     fine: "Google Play shows the exact price for your country. No subscription, ever.",
     list: ["Unlimited automations", "Messages read aloud & auto-reply", "Calendar triggers", "Shake, face down, sunrise", "Do Not Disturb & silent", "Loud alarm", "Every reminder read aloud", "No ads"],
     how: "In the app: Settings → VisaSched Pro",

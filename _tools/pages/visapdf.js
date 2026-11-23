@@ -181,7 +181,6 @@ module.exports = {
   },
   pitch: {
     title: "Get Pro once. Keep it forever.",
-    price: "R49.99", once: "once-off · about $2.99",
     fine: "Google Play shows the exact price for your country. No subscription, no monthly fees – ever.",
     list: ["Word, Excel & PowerPoint", "Scan a list to Excel", "Draw, highlight, text, whiteout", "Page tools & join PDFs", "Lock PDFs with a password",
       "Read it to me & Make text", "Any PDF size", "No ads"],

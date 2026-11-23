@@ -2,6 +2,11 @@
   "_help": "The ONE list of Visagie apps. Read by the website home page and by every app's 'More Visa apps' screen (no app update needed). New app: add a block, keep live:false until it is public on Google Play, then set live:true. Apps only show live apps to the public; test builds show all. icon = path on this site (256x256 PNG in img/). order = lower comes first.",
   "version": 1,
   "developerPage": "https://play.google.com/store/apps/dev?id=5667284812696899656",
+  "_prices": "PRICES – change here only. sale = a real, dated launch price (see _sale). pro = Pro price shown on the website (set the SAME price in Play Console → the app → Monetize → In-app products; the apps show Play's own price). An app can override with its own pro. business = price per person on /business/ by number of people [from, rand each]; app:false on an app hides it there.",
+  "pro": { "zar": "R99.99", "usd": "$4.99" },
+  "_sale": "LAUNCH SALE – only while it is TRUE: Play Console must really charge the sale price until the 'until' date (inclusive), then the normal pro price. After that date the website goes back to the normal price by itself. No sale: delete the sale line.",
+  "sale": { "zar": "R49.99", "usd": "$2.99", "until": "2026-12-31", "name": "Launch price" },
+  "business": { "app": [[5, 79], [50, 69], [200, 49]], "pass": [[5, 249], [50, 199], [200, 149]] },
   "apps": [
     {
       "id": "visagie.philip.visasched",
@@ -88,6 +93,8 @@
     },
     {
       "id": "visagie.philip.visarelax",
+      "pro": { "zar": "R49.99", "usd": "$2.99" },
+      "business": false,
       "name": "VisaRelax",
       "tagline": "22 family games in one app",
       "about": "Chess, checkers, puzzles and arcade – play the phone, a friend, or 2 phones in the same room.",

@@ -87,9 +87,35 @@
   });
 
   /* 10. Google Play buttons follow apps.json: live:false → "Coming soon". <span data-play="package.id"><a …></span> */
-  const slots = $$("[data-play]");
-  if (slots.length) fetch(root + "apps.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  /* 11. Pro prices follow apps.json too ("pro", or an app's own "pro"): <div data-pro="package.id"><b>R…</b><span>…</span></div>,
+         and <span data-pro-text></span> in running text ("about R99.99 (≈ $4.99)"). */
+  const slots = $$("[data-play]"), prices = $$("[data-pro]"), priceTexts = $$("[data-pro-text]");
+  if (slots.length || prices.length || priceTexts.length) fetch(root + "apps.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
     const live = {}; d.apps.forEach(a => live[a.id] = !!a.live);
     slots.forEach(s => { if (live[s.dataset.play] === false) s.innerHTML = '<span class="soon">Coming soon to Google Play</span>'; });
+    const own = id => (d.apps.find(a => a.id === id) || {}).pro;
+    const pro = id => own(id) || d.pro;
+    // A real, dated launch sale (apps.json "sale"): only for apps on the normal price, and only up to its last day.
+    const sale = d.sale && new Date() <= new Date(d.sale.until + "T23:59:59+02:00") ? d.sale : null;
+    const endText = sale ? new Date(sale.until + "T12:00:00+02:00").toLocaleDateString("en-ZA", { day: "numeric", month: "long" }) : "";
+    const daysLeft = sale ? Math.max(0, Math.ceil((new Date(sale.until + "T23:59:59+02:00") - new Date()) / 864e5)) : 0;
+    prices.forEach(el => {
+      const p = pro(el.dataset.pro), b = el.querySelector("b"), s = el.querySelector("span");
+      if (!p) return;
+      if (sale && !own(el.dataset.pro)) {
+        if (b) b.innerHTML = '<s class="was">' + p.zar + "</s> " + sale.zar;
+        if (s) s.textContent = sale.name + " until " + endText + (daysLeft <= 14 ? " – " + daysLeft + (daysLeft === 1 ? " day" : " days") + " left" : "") + " · then " + p.zar + " (about " + p.usd + ")";
+        el.classList.add("on-sale");
+      } else {
+        if (b) b.textContent = p.zar;
+        if (s) s.textContent = "once-off · about " + p.usd;
+      }
+    });
+    priceTexts.forEach(el => {
+      if (!d.pro) return;
+      el.textContent = sale
+        ? "about " + sale.zar + " (≈ " + sale.usd + ") – " + sale.name.toLowerCase() + " until " + endText + ", then " + d.pro.zar
+        : "about " + d.pro.zar + " (≈ " + d.pro.usd + ")";
+    });
   }).catch(() => {});
 })();

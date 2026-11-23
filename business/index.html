@@ -151,14 +151,18 @@
 // From PayFast: Settings → Integration (Merchant ID + Merchant Key). Empty = sandbox TEST MODE (no real money).
 const MERCHANT_ID  = "";
 const MERCHANT_KEY = "";
-// Price per person in rand, by number of people (from = lowest count for that price).
-const PRICES = {
-  app:  [{from: 5, each: 45}, {from: 50, each: 39}, {from: 200, each: 29}],   // one app's Pro
-  pass: [{from: 5, each: 129}, {from: 50, each: 109}, {from: 200, each: 89}],  // Visa Pro Pass (all apps)
+// PRICES ARE NOT HERE: they come from ../apps.json ("business" = price per person by number of people,
+// "pro" = the one-person Play price, used for the "You save" badge). The numbers below are only a fallback
+// for when apps.json can't load. An app with "business": false in apps.json is hidden here.
+let PRICES = {
+  app:  [{from: 5, each: 79}, {from: 50, each: 69}, {from: 200, each: 49}],      // one app's Pro
+  pass: [{from: 5, each: 249}, {from: 50, each: 199}, {from: 200, each: 149}],   // Visa Pro Pass (all apps)
 };
-const SOLO_PRICE = {app: 49.99, pass: 199.96}; // what one person pays on Google Play (for the "save" badge)
+let SOLO = {};                       // key → one-person rand price, from apps.json
+const SOLO_FALLBACK = 99.99;
+let SALE_NOTE = "";                  // set from apps.json "sale" while a launch sale runs
 // sell:true only once the app's LIVE Play version has "Have a code?" (RedeemCode.kt). key = name in keys.json.
-const APPS = [
+let APPS = [
   {key: "visapdf",   name: "VisaPdf",   note: "PDF office",       img: "../img/visapdf.png",   sell: true},
   {key: "visaplay",  name: "VisaPlay",  note: "Video & radio",    img: "../img/visaplay.png",  sell: true},
   {key: "visacook",  name: "VisaCook",  note: "Recipes",          img: "../img/visacook.png",  sell: true},
@@ -179,9 +183,11 @@ const $ = id => document.getElementById(id);
 const rand = n => "R" + n.toLocaleString("en-ZA", {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2});
 let choice = "visapdf";
 
+function renderApps() {
 $("apps").innerHTML = APPS.map(a =>
   `<label class="app"><input type="radio" name="app" value="${a.key}"${a.key === choice ? " checked" : ""}><img src="${a.img}" alt=""><span>${a.name}<small>${a.note}</small></span></label>`
 ).join("") + `<label class="app pass"><input type="radio" name="app" value="all"><span class="pi">★</span><span>Visa Pro Pass<small>Pro in every Visa app – one key per person</small></span></label>`;
+}
 $("apps").addEventListener("change", e => { choice = e.target.value; update(); });
 
 [10, 25, 50, 100, 250].forEach(n => { const b = document.createElement("button"); b.type = "button"; b.textContent = n; b.onclick = () => { $("seats").value = n; update(); }; $("quick").append(b); });
@@ -200,7 +206,9 @@ function update() {
   $("sumWhat").textContent = `${n} × ${title()}`;
   $("sumEach").textContent = `${rand(each)} each`;
   $("sumTotal").textContent = rand(total);
-  const solo = SOLO_PRICE[kind()] * n, save = Math.round(solo - total);
+  const one = k => SOLO[k] || SOLO_FALLBACK;
+  const soloEach = choice === "all" ? APPS.reduce((s, a) => s + one(a.key), 0) : one(choice);
+  const solo = soloEach * n, save = Math.round(solo - total);
   $("sumSave").hidden = save <= 0; $("sumSave").textContent = `You save ${rand(save)} vs buying one by one`;
   [...$("quick").children].forEach(b => b.classList.toggle("on", +b.textContent === n));
   const tiers = PRICES[kind()];
@@ -210,6 +218,7 @@ function update() {
   }).join("");
   $("quote").href = "mailto:philip.visadev@gmail.com?subject=" + encodeURIComponent(`Quote: ${n} x ${title()}`) +
     "&body=" + encodeURIComponent(`Hi Philip,\n\nPlease send a quote / invoice for ${n} x ${title()} (${rand(total)}).\n\nCompany:\nVAT / reg number:\nName:\n`);
+  $("sumNote").textContent = SALE_NOTE || "once-off, keys by email";
   $("err").textContent = "";
 }
 
@@ -233,7 +242,30 @@ $("pay").onclick = () => {
   for (const [k, v] of Object.entries(fields)) { if (v === "") continue; const i = document.createElement("input"); i.type = "hidden"; i.name = k; i.value = v; f.append(i); }
   document.body.append(f); $("pay").disabled = true; $("pay").textContent = "Opening PayFast…"; f.submit();
 };
-update();
+// Prices + which apps are sold come from apps.json (the one place to change them); fallback above if it fails.
+fetch("../apps.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  const tiers = list => list.map(([from, each]) => ({from, each}));
+  if (d.business) PRICES = {app: tiers(d.business.app), pass: tiers(d.business.pass)};
+  const num = s => parseFloat(String(s).replace(/[^0-9.]/g, ""));
+  // A real, dated launch sale (apps.json "sale") also lowers team prices by the same share, so a team never pays
+  // more per person than one person on Google Play.
+  const sale = d.sale && d.pro && new Date() <= new Date(d.sale.until + "T23:59:59+02:00") ? d.sale : null;
+  if (sale) {
+    const f = num(sale.zar) / num(d.pro.zar);
+    for (const k of ["app", "pass"]) PRICES[k] = PRICES[k].map(t => ({from: t.from, each: Math.round(t.each * f)}));
+    const end = new Date(sale.until + "T12:00:00+02:00").toLocaleDateString("en-ZA", {day: "numeric", month: "long"});
+    SALE_NOTE = `${sale.name} until ${end} · once-off, keys by email`;
+  }
+  APPS = APPS.filter(a => {
+    const j = d.apps.find(x => x.id === "visagie.philip." + a.key);
+    if (j && j.business === false) return false;
+    SOLO[a.key] = num((j && j.pro) ? j.pro.zar : sale ? sale.zar : (d.pro || {}).zar) || SOLO_FALLBACK;
+    return true;
+  });
+}).catch(() => {}).finally(() => {
+  if (!APPS.some(a => a.key === choice)) choice = APPS.length ? APPS[0].key : "all";
+  renderApps(); update();
+});
 </script>
 <script src="../assets/site.js" defer></script>
 </body>

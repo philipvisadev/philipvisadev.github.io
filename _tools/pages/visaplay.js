@@ -105,7 +105,6 @@ module.exports = {
   },
   pitch: {
     title: "Your phone, your TV, the world's radio.",
-    price: "R49.99", once: "once-off · about $2.99",
     fine: "Google Play shows the exact price for your country. No subscription, ever.",
     list: ["Thousands of radio stations", "Cast to your TV", "Play from your PC or NAS", "Play any link", "Picture-in-picture", "Equaliser & bass boost", "Sleep timer & A-B repeat", "No ads"],
     how: "In the app: Settings → VisaPlay Pro",

@@ -5,6 +5,10 @@
 // Folders starting with "_" are not published by GitHub Pages. Never touches <slug>/privacy.html.
 const fs = require("fs"), path = require("path");
 const SITE = path.join(__dirname, "..");
+// Pro prices come from apps.json ("pro", or the app's own "pro") – the ONE place to change them. site.js also
+// refreshes them in the browser, so a price change in apps.json shows even before this tool is run again.
+const APPS = JSON.parse(fs.readFileSync(path.join(SITE, "apps.json"), "utf8"));
+const proPrice = id => (APPS.apps.find(x => x.id === id) || {}).pro || APPS.pro;
 
 const NAV = [
   { slug: "visapdf", name: "VisaPdf", line: "The PDF office in your pocket" },
@@ -112,7 +116,7 @@ function pitch(a) {
   return `<section class="light"><div class="wrap"><div class="pitch rv z" data-led><div class="seal"></div>
 <span class="kicker" style="color:var(--deep-orange)">${a.name} Pro</span>
 <h2>${p.title}</h2>
-<div class="price"><b>${p.price}</b><span>${p.once}</span></div><p class="fine">${p.fine}</p>
+<div class="price" data-pro="${a.id}"><b>${proPrice(a.id).zar}</b><span>once-off · about ${proPrice(a.id).usd}</span></div><p class="fine">${p.fine}</p>
 <ul>${p.list.map(l => `<li>${l}</li>`).join("")}</ul>
 <div class="cta-row">${playBtn(a.id)}<span style="font-weight:800">${p.how}</span></div>
 <div class="why">${p.why.map(w => `<div><b>${w[0]}</b>${w[1]}</div>`).join("")}</div>

@@ -303,3 +303,7 @@ footer .made{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,206,
 @media (prefers-reduced-motion:reduce){.js .hero .rv{animation:none}}
 html{overflow-x:clip}
 @media (max-width:899px){.js .rv.l,.js .rv.r{transform:translateY(34px)}.js .rv.l.in,.js .rv.r.in{transform:none}}
+
+/* launch sale (apps.json "sale", filled in by site.js) */
+.price s.was{opacity:.55;font-size:.6em;margin-right:.15em;text-decoration-thickness:3px}
+.price.on-sale span{color:var(--deep-orange);font-weight:800}
