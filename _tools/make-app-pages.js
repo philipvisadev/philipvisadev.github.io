@@ -11,6 +11,8 @@ const NAV = [
   { slug: "visaplay", name: "VisaPlay", line: "Plays everything + world radio" },
   { slug: "visacook", name: "VisaCook", line: "Recipes, cocktails, groceries" },
   { slug: "visasched", name: "VisaSched", line: "Your phone on autopilot" },
+  { slug: "visakeep", name: "VisaKeep", line: "Dates, lists & car" },
+  { slug: "visarelax", name: "VisaRelax", line: "22 family games" },
 ];
 
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

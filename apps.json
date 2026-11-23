@@ -8,7 +8,11 @@
       "name": "VisaSched",
       "tagline": "Smart reminders – the one that keeps time",
       "about": "Reminders that read themselves out loud and start the other Visa apps at the right moment.",
-      "points": ["Reminders that read themselves out loud", "Opens WhatsApp, the dialer or maps – filled in, ready to send", "Starts the other Visa apps at the right moment"],
+      "points": [
+        "Reminders that read themselves out loud",
+        "Opens WhatsApp, the dialer or maps – filled in, ready to send",
+        "Starts the other Visa apps at the right moment"
+      ],
       "category": "Everyday",
       "icon": "img/visasched.png",
       "hub": true,
@@ -22,7 +26,11 @@
       "name": "VisaPlay",
       "tagline": "Video & music player + internet radio",
       "about": "Plays almost any video or music file – MKV, AVI, FLAC – plus radio from around the world.",
-      "points": ["Plays almost any format – MKV, AVI, FLAC…", "Internet radio from South Africa and the world", "Playlists, favourites, carry on where you stopped"],
+      "points": [
+        "Plays almost any format – MKV, AVI, FLAC…",
+        "Internet radio from South Africa and the world",
+        "Playlists, favourites, carry on where you stopped"
+      ],
       "category": "Media",
       "icon": "img/visaplay.png",
       "live": true,
@@ -34,7 +42,11 @@
       "name": "VisaCook",
       "tagline": "Recipes & cocktails",
       "about": "Food and cocktail recipes, a servings calculator and a grocery list with a budget.",
-      "points": ["Food and cocktail recipes, mocktails too", "Change the servings – everything recalculates", "Grocery list with a budget"],
+      "points": [
+        "Food and cocktail recipes, mocktails too",
+        "Change the servings – everything recalculates",
+        "Grocery list with a budget"
+      ],
       "category": "Food & drink",
       "icon": "img/visacook.png",
       "live": true,
@@ -46,12 +58,50 @@
       "name": "VisaPdf",
       "tagline": "Photo to PDF",
       "about": "Turn photos and camera shots into one tidy PDF and send it to WhatsApp or email.",
-      "points": ["Photos or camera shots into one tidy PDF", "Crop, rotate and reorder pages", "Send to WhatsApp or email – several at once"],
+      "points": [
+        "Photos or camera shots into one tidy PDF",
+        "Crop, rotate and reorder pages",
+        "Send to WhatsApp or email – several at once"
+      ],
       "category": "Documents",
       "icon": "img/visapdf.png",
       "live": true,
       "privacy": true,
       "order": 4
+    },
+    {
+      "id": "visagie.philip.visakeep",
+      "name": "VisaKeep",
+      "tagline": "Dates, lists & car",
+      "about": "Never miss a licence disc, warranty or birthday – plus shopping lists and a car logbook.",
+      "points": [
+        "Photo + date – reminded a month, a week and on the day",
+        "Shopping lists and home stock",
+        "Fuel and service logbook for your car"
+      ],
+      "category": "Everyday",
+      "icon": "img/visakeep.png",
+      "live": false,
+      "privacy": true,
+      "isNew": true,
+      "order": 5
+    },
+    {
+      "id": "visagie.philip.visarelax",
+      "name": "VisaRelax",
+      "tagline": "22 family games in one app",
+      "about": "Chess, checkers, puzzles and arcade – play the phone, a friend, or 2 phones in the same room.",
+      "points": [
+        "Board games, puzzles and arcade – 22 in one",
+        "Play on 2 phones, no internet needed",
+        "Beat the Boss, collect 150 gel stickers"
+      ],
+      "category": "Games",
+      "icon": "img/visarelax.png",
+      "live": false,
+      "privacy": true,
+      "isNew": true,
+      "order": 6
     }
   ]
 }
