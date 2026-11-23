@@ -108,7 +108,7 @@ module.exports = {
     fine: "Google Play shows the exact price for your country. No subscription, ever.",
     list: ["Thousands of radio stations", "Cast to your TV", "Play from your PC or NAS", "Play any link", "Picture-in-picture", "Equaliser & bass boost", "Sleep timer & A-B repeat", "No ads"],
     how: "In the app: Settings → VisaPlay Pro",
-    why: [["Pay once", "No monthly fee for radio or streaming – it's yours."], ["Yours to keep", "New phone? Same Google account, tap Restore purchase."], ["Made in South Africa", "By one developer, tested on real phones and car radios."]],
+    why: [["Pay once", "No monthly fee for radio or streaming – it's yours."], ["Yours to keep", "New phone? Same Google account, tap Restore purchase."], ["Made in South Africa", "By a small team, tested on real phones and car radios."]],
   },
   privacy: { title: "Your videos stay yours.", text: "No account, no sign-up, nothing uploaded. Logins for your own computers are kept encrypted on your phone only." },
   faq: [

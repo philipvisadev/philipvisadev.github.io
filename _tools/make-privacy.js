@@ -38,7 +38,7 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(app)} Privacy Policy</title>
-<meta name="description" content="How ${esc(app)} handles your information. Made by Philip Visagie, South Africa.">
+<meta name="description" content="How ${esc(app)} handles your information. Made by the Visagie Apps team, South Africa.">
 <link rel="icon" href="../img/${slug}.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

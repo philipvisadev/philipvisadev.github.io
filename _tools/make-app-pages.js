@@ -36,7 +36,7 @@ function nav(cur) {
 
 function footer(a) {
   return `<footer><div class="wrap"><div class="cols">
-  <div><h4>Visagie Apps</h4><p>Simple, powerful Android apps<br>by Philip Visagie, South Africa.</p></div>
+  <div><h4>Visagie Apps</h4><p>Simple, powerful Android apps<br>by the Visagie Apps team, South Africa.</p></div>
   <div><h4>${esc(a.name)}</h4><p><a href="privacy.html">Privacy policy</a></p><p><a href="#pro">Free vs Pro</a></p><p><a href="#howto">How to</a></p></div>
   <div><h4>The family</h4>${NAV.map(n => `<p><a href="../${n.slug}/">${n.name}</a></p>`).join("")}</div>
   <div><h4>Questions?</h4><p><a href="mailto:philip.visadev@gmail.com">philip.visadev@gmail.com</a></p><p><a href="../">Home</a></p></div>

@@ -185,7 +185,7 @@ module.exports = {
     list: ["Word, Excel & PowerPoint", "Scan a list to Excel", "Draw, highlight, text, whiteout", "Page tools & join PDFs", "Lock PDFs with a password",
       "Read it to me & Make text", "Any PDF size", "No ads"],
     how: "In the app: Settings → Upgrade to Pro",
-    why: [["Less than a coffee", "Pay once – then every new Pro tool we add is yours too."], ["Yours to keep", "Bought with your Google account. New phone? Tap Restore purchase."], ["Supports a small developer", "Built in South Africa by one person, shaped by real testers."]],
+    why: [["Less than a coffee", "Pay once – then every new Pro tool we add is yours too."], ["Yours to keep", "Bought with your Google account. New phone? Tap Restore purchase."], ["Supports a small team", "Built in South Africa by a small team, shaped by real testers."]],
   },
   privacy: { title: "Your documents never leave your phone.", text: "ID cards, payslips, contracts – VisaPdf reads, scans and converts them all on your device. No account, no cloud, no uploads. Only you decide where a PDF goes." },
   faq: [
@@ -193,7 +193,7 @@ module.exports = {
     ["Does it upload my documents?", "No. Everything – scanning, reading text, converting to Word – happens on your phone. VisaPdf has no account and no server."],
     ["I bought Pro on my old phone. Do I pay again?", "No. Install VisaPdf with the same Google account, open Settings and tap Restore purchase."],
     ["Can it open PDFs other people send me?", "Yes. In WhatsApp, Gmail or Files tap the PDF and pick “Open with VisaPdf”. You can zoom, search, copy, sign, fill in and print – free."],
-    ["Why is it called VisaPdf?", "“Visa” comes from the developer's surname, Visagie. It's a general PDF app for any documents – not for visa applications."],
+    ["Why is it called VisaPdf?", "“Visa” comes from the founder's surname, Visagie. It's a general PDF app for any documents – not for visa applications."],
   ],
 };
 

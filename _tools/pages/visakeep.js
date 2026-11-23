@@ -108,7 +108,7 @@ module.exports = {
   },
   privacy: { title: "Your papers stay on your phone.", text: "Everything stays on your phone – no account, no cloud, and VisaKeep never connects to your bank. Contacts are picked one at a time, so VisaKeep can't see your contact list. Photos come from your own camera or photo picker." },
   faq: [
-    ["Is this a visa or immigration service?", "No. VisaKeep is a personal organiser made by an independent developer in South Africa. “Visa” comes from the surname Visagie."],
+    ["Is this a visa or immigration service?", "No. VisaKeep is a personal organiser made by a small team in South Africa. “Visa” comes from the surname Visagie."],
     ["When do the reminders come?", "Around 8 in the morning on the days you chose, and always on the day itself. Appointments with a time remind you the set time before."],
     ["Do I pay again on a new phone?", "No. Use the same Google account and tap Restore purchase in Settings."],
     ["Does the link I send upload my data?", "No. The date sits in the link itself after the “#”, which is never sent to our website."],
