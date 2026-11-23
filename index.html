@@ -30,7 +30,7 @@
 .node img{width:100%;border-radius:23%;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .35s,box-shadow .35s}
 .node b{display:block;margin-top:8px;font-weight:800;font-size:clamp(12px,1.8vw,16px);letter-spacing:.02em}
 .node:hover img,.node.on img{transform:scale(1.06);box-shadow:0 0 0 3px var(--gold),0 0 36px rgba(255,206,69,.55),0 10px 30px rgba(0,0,0,.45)}
-.sat{width:18%}.hub{width:25%;cursor:default}
+.sat{width:15%}.hub{width:22%;cursor:default}
 .hub .halo{position:relative;display:block}
 .hub .led{position:absolute;inset:-15%;width:130%;height:130%;pointer-events:none}
 .hub .led circle{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:0 9.2;animation:spin 14s linear infinite;transform-origin:50% 50%;filter:drop-shadow(0 0 2px var(--gold))}
@@ -128,7 +128,7 @@
 
 <header class="bar"><div class="wrap">
   <a class="brand" href="./" aria-current="page"><span class="dots"><i></i><i></i><i></i><i></i></span><span class="t">Visagie Apps</span></a>
-  <nav aria-label="Apps"><a href="visapdf/"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></a><a href="visaplay/"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></a><a href="visacook/"><img src="img/visacook.png" alt=""><b>VisaCook</b></a><a href="visasched/"><img src="img/visasched.png" alt=""><b>VisaSched</b></a></nav>
+  <nav aria-label="Apps"><a href="visapdf/"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></a><a href="visaplay/"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></a><a href="visacook/"><img src="img/visacook.png" alt=""><b>VisaCook</b></a><a href="visasched/"><img src="img/visasched.png" alt=""><b>VisaSched</b></a><a href="visakeep/"><img src="img/visakeep.png" alt=""><b>VisaKeep</b></a><a href="visarelax/"><img src="img/visarelax.png" alt=""><b>VisaRelax</b></a></nav>
 </div></header>
 
 <main>
@@ -146,22 +146,32 @@
     <div class="family rv z d2" id="family">
       <svg class="lines" viewBox="0 0 100 100" aria-hidden="true">
         <circle class="ring" cx="50" cy="50" r="44"/>
-        <path id="p-play" class="track" d="M50 48 Q12 50 14 16"/>
-        <path id="p-cook" class="track" d="M50 48 Q88 50 86 16"/>
-        <path id="p-pdf"  class="track" d="M50 48 Q22 76 50 90"/>
-        <path class="flow" data-k="play" d="M50 48 Q12 50 14 16"/>
-        <path class="flow" data-k="cook" d="M50 48 Q88 50 86 16"/>
-        <path class="flow" data-k="pdf"  d="M50 48 Q22 76 50 90"/>
+        <path id="p-keep" class="track" d="M50 48 Q59 30 50 12"/>
+        <path id="p-play" class="track" d="M50 48 Q70.4 51.7 86 38"/>
+        <path id="p-cook" class="track" d="M50 48 Q53.4 69.9 72 82"/>
+        <path id="p-pdf" class="track" d="M50 48 Q31.4 60.1 28 82"/>
+        <path id="p-relax" class="track" d="M50 48 Q34.4 34.3 14 38"/>
+        <path class="flow" data-k="keep" d="M50 48 Q59 30 50 12"/>
+        <path class="flow" data-k="play" d="M50 48 Q70.4 51.7 86 38"/>
+        <path class="flow" data-k="cook" d="M50 48 Q53.4 69.9 72 82"/>
+        <path class="flow" data-k="pdf" d="M50 48 Q31.4 60.1 28 82"/>
+        <path class="flow" data-k="relax" d="M50 48 Q34.4 34.3 14 38"/>
+        <circle class="spark" data-k="keep" r="1.1"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p-keep"/></animateMotion></circle>
         <circle class="spark" data-k="play" r="1.1"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p-play"/></animateMotion></circle>
         <circle class="spark" data-k="cook" r="1.1"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-cook"/></animateMotion></circle>
-        <circle class="spark" data-k="pdf"  r="1.1"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#p-pdf"/></animateMotion></circle>
+        <circle class="spark" data-k="pdf" r="1.1"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#p-pdf"/></animateMotion></circle>
+        <circle class="spark" data-k="relax" r="1.1"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p-relax"/></animateMotion></circle>
       </svg>
-      <span class="tag" data-k="play" style="left:22%;top:41%">16:00 · radio on</span>
-      <span class="tag" data-k="cook" style="left:78%;top:41%">17:00 · dinner</span>
-      <span class="tag" data-k="pdf"  style="left:29%;top:76%">17:30 · paperwork</span>
-      <button class="node sat" data-k="play" style="left:14%;top:16%"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></button>
-      <button class="node sat" data-k="cook" style="left:86%;top:16%"><img src="img/visacook.png" alt=""><b>VisaCook</b></button>
-      <button class="node sat" data-k="pdf"  style="left:50%;top:90%"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></button>
+      <span class="tag" data-k="keep" style="left:50%;top:29%">Mon 07:30 · what's due</span>
+      <span class="tag" data-k="play" style="left:86%;top:55%">16:00 · radio on</span>
+      <span class="tag" data-k="cook" style="left:72%;top:98%">17:00 · dinner</span>
+      <span class="tag" data-k="pdf" style="left:28%;top:98%">17:30 · paperwork</span>
+      <span class="tag" data-k="relax" style="left:14%;top:55%">20:00 · game night</span>
+      <button class="node sat" data-k="keep" style="left:50%;top:12%"><img src="img/visakeep.png" alt=""><b>VisaKeep</b></button>
+      <button class="node sat" data-k="play" style="left:86%;top:38%"><img src="img/visaplay.png" alt=""><b>VisaPlay</b></button>
+      <button class="node sat" data-k="cook" style="left:72%;top:82%"><img src="img/visacook.png" alt=""><b>VisaCook</b></button>
+      <button class="node sat" data-k="pdf" style="left:28%;top:82%"><img src="img/visapdf.png" alt=""><b>VisaPdf</b></button>
+      <button class="node sat" data-k="relax" style="left:14%;top:38%"><img src="img/visarelax.png" alt=""><b>VisaRelax</b></button>
       <div class="node hub" style="left:50%;top:52%">
         <span class="halo"><svg class="led" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/></svg>
         <img src="img/visasched.png" alt=""></span><b>VisaSched</b><small>keeps time</small>
@@ -282,16 +292,20 @@
       <ol class="day">
         <li class="rv"><time>06:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Good morning, out loud</b><span>VisaSched reads your first reminder while you make coffee.</span></div></li>
         <li class="rv d1"><time>07:15</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Car Bluetooth connects</b><span>Your music carries on in VisaPlay, right where you stopped.</span></div></li>
+        <li class="rv d1"><time>07:30</time><img src="img/visakeep.png" alt="VisaKeep"><div class="what"><b>Monday: what's due?</b><span>VisaKeep shows this week's dates – the licence disc runs out on Friday.</span></div></li>
         <li class="rv d2"><time>10:00</time><img src="img/visapdf.png" alt="VisaPdf"><div class="what"><b>Sign the lease</b><span>Open the PDF from WhatsApp in VisaPdf, sign with your finger, send it back.</span></div></li>
         <li class="rv d3"><time>16:00</time><img src="img/visaplay.png" alt="VisaPlay"><div class="what"><b>Radio on <span class="pro-tag">Pro</span></b><span>Your favourite station starts by itself.</span></div></li>
         <li class="rv d4"><time>17:00</time><img src="img/visacook.png" alt="VisaCook"><div class="what"><b>What's for dinner? <span class="pro-tag">Pro</span></b><span>VisaCook opens tonight's dinner from your plan.</span></div></li>
+        <li class="rv d4"><time>20:00</time><img src="img/visarelax.png" alt="VisaRelax"><div class="what"><b>Friday is chess night</b><span>VisaSched opens Chess in VisaRelax – the board is ready.</span></div></li>
         <li class="rv d5"><time>21:30</time><img src="img/visasched.png" alt="VisaSched"><div class="what"><b>Bedtime</b><span>Charger in – VisaSched switches the phone to vibrate.</span></div></li>
       </ol>
       <div class="story rv r" id="story" aria-live="polite">
         <div class="pick" role="group" aria-label="Pick an example">
+          <button data-k="keep" aria-pressed="false">What's due</button>
           <button data-k="play" aria-pressed="true">Radio at 4</button>
           <button data-k="cook" aria-pressed="false">Dinner at 5</button>
           <button data-k="pdf" aria-pressed="false">PDF after work</button>
+          <button data-k="relax" aria-pressed="false">Game night</button>
         </div>
         <div class="rule">
           <span class="lbl">When</span><span class="val" id="s-when"></span>
@@ -354,7 +368,11 @@ const STORIES = {
   cook:{ when:"Every day at <strong>17:00</strong>", act:"VisaSched opens <strong>tonight's dinner</strong> in VisaCook.",
          say:"What's for dinner at 5", note:"The dinner plan is part of VisaCook Pro." },
   pdf: { when:"Weekdays at <strong>17:30</strong>", act:"VisaSched opens the <strong>VisaPdf camera</strong> for the day's paperwork.",
-         say:"Make a PDF after work", note:"Free in both apps." }
+         say:"Make a PDF after work", note:"Free in both apps." },
+  keep:{ when:"Mondays at <strong>07:30</strong>", act:"VisaSched opens <strong>what's due this week</strong> in VisaKeep.",
+         say:"What's due this week", note:"Tuesdays it can open your shopping list too. Free in both apps." },
+  relax:{ when:"Fridays at <strong>20:00</strong>", act:"VisaSched opens <strong>Chess</strong> in VisaRelax – it's chess night.",
+         say:"Chess on Friday nights", note:"Pick a game for every night of the week. Free in both apps." }
 };
 const playUrl = p => "https://play.google.com/store/apps/details?id=" + p;
 const playSvg = document.querySelector(".btn-play svg").outerHTML;
@@ -380,8 +398,8 @@ fetch("apps.json", { cache: "no-cache" }).then(r => r.json()).then(data => {
   document.getElementById("cards").innerHTML = '<p>Our apps are on <a href="https://play.google.com/store/apps/dev?id=5667284812696899656">Google Play</a>.</p>';
 });
 
-/* ---- the family diagram + story card: cycles through the 3 examples until the visitor picks one ---- */
-const order = ["play","cook","pdf"];
+/* ---- the family diagram + story card: cycles through the 5 examples until the visitor picks one ---- */
+const order = ["keep","play","cook","pdf","relax"];
 let cur = 0, timer = null;
 function show(k){
   document.querySelectorAll("#family [data-k]").forEach(el => el.classList.toggle("on", el.dataset.k === k));
