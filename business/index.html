@@ -157,13 +157,15 @@ const PRICES = {
   pass: [{from: 5, each: 129}, {from: 50, each: 109}, {from: 200, each: 89}],  // Visa Pro Pass (all apps)
 };
 const SOLO_PRICE = {app: 49.99, pass: 199.96}; // what one person pays on Google Play (for the "save" badge)
-// Only list apps whose LIVE Play version has "Have a code?" (RedeemCode.kt). key = name in keys.json.
+// sell:true only once the app's LIVE Play version has "Have a code?" (RedeemCode.kt). key = name in keys.json.
 const APPS = [
-  {key: "visapdf",   name: "VisaPdf",   note: "PDF office",       img: "../img/visapdf.png"},
-  {key: "visaplay",  name: "VisaPlay",  note: "Video & radio",    img: "../img/visaplay.png"},
-  {key: "visacook",  name: "VisaCook",  note: "Recipes",          img: "../img/visacook.png"},
-  {key: "visasched", name: "VisaSched", note: "Smart reminders",  img: "../img/visasched.png"},
-];
+  {key: "visapdf",   name: "VisaPdf",   note: "PDF office",       img: "../img/visapdf.png",   sell: true},
+  {key: "visaplay",  name: "VisaPlay",  note: "Video & radio",    img: "../img/visaplay.png",  sell: true},
+  {key: "visacook",  name: "VisaCook",  note: "Recipes",          img: "../img/visacook.png",  sell: true},
+  {key: "visasched", name: "VisaSched", note: "Smart reminders",  img: "../img/visasched.png", sell: true},
+  {key: "visakeep",  name: "VisaKeep",  note: "Home admin",       img: "../img/visakeep.png",  sell: false}, // not on Play yet
+  {key: "visarelax", name: "VisaRelax", note: "Games",            img: "../img/visarelax.png", sell: false}, // not on Play yet, no icon on site yet
+].filter(a => a.sell);
 const MIN = 5, MAX = 5000;
 /* ========================================================= */
 
